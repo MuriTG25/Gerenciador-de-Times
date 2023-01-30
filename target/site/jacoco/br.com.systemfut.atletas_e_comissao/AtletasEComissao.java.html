@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AtletasEComissao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.atletas_e_comissao</a> &gt; <span class="el_source">AtletasEComissao.java</span></div><h1>AtletasEComissao.java</h1><pre class="source lang-java linenums">package br.com.systemfut.atletas_e_comissao;
+
+import br.com.systemfut.dados_extras.DadosBancarios;
+import br.com.systemfut.dados_extras.DadosPessoais;
+
+import java.util.LinkedList;
+
+public abstract sealed class AtletasEComissao permits Jogadores,ComissaoTecnica {
+    private String nomeCompleto;
+    private long CPF;
+    protected double salario;
+    private DadosBancarios dadosDoBanco;
+    private DadosPessoais dadosPessoais;
+
+<span class="nc" id="L15">    public AtletasEComissao(String nomeCompleto, long CPF) {</span>
+<span class="nc" id="L16">        this.nomeCompleto = nomeCompleto;</span>
+<span class="nc bnc" id="L17" title="All 4 branches missed.">        if(CPF &gt;=10000000000L &amp;&amp; CPF &lt;=99999999999L){</span>
+<span class="nc" id="L18">            this.CPF = CPF;</span>
+        }else{
+<span class="nc" id="L20">            throw new ArithmeticException(&quot;Esse CPF é inválido&quot;);</span>
+        }
+<span class="nc" id="L22">    }</span>
+
+    public String getNomeCompleto() {
+<span class="nc" id="L25">        return nomeCompleto;</span>
+    }
+
+    public long getCPF() {
+<span class="nc" id="L29">        return CPF;</span>
+    }
+
+    public DadosBancarios getDadosDoBanco() {
+<span class="nc" id="L33">        return dadosDoBanco;</span>
+    }
+
+    public void setDadosDoBanco(DadosBancarios dadosDoBanco) {
+<span class="nc" id="L37">        this.dadosDoBanco = dadosDoBanco;</span>
+<span class="nc" id="L38">    }</span>
+
+    public DadosPessoais getDadosPessoais() {
+<span class="nc" id="L41">        return dadosPessoais;</span>
+    }
+
+    public void setDadosPessoais(DadosPessoais dadosPessoais) {
+<span class="nc" id="L45">        this.dadosPessoais = dadosPessoais;</span>
+<span class="nc" id="L46">    }</span>
+    public double getSalario() {
+<span class="nc" id="L48">        return salario;</span>
+    }
+    public abstract void setSalario(double salario);
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,0 +1,7 @@
+br\com\systemfut\atletas_e_comissao\ComissaoTecnicaTest.class
+br\com\systemfut\bonificacao\BonificacaoTest.class
+br\com\systemfut\Clube\ClubeTest.class
+br\com\systemfut\funcionarios_gerais\FuncionariosComumTest.class
+br\com\systemfut\atletas_e_comissao\JogadoresTest.class
+br\com\systemfut\dados_extras\DadosPessoaisTest.class
+br\com\systemfut\funcionarios_gerais\FuncionariosADMTest.class

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Clube.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.Clube</a> &gt; <span class="el_source">Clube.java</span></div><h1>Clube.java</h1><pre class="source lang-java linenums">package br.com.systemfut.Clube;
+
+import br.com.systemfut.atletas_e_comissao.ComissaoTecnica;
+import br.com.systemfut.atletas_e_comissao.Jogadores;
+import br.com.systemfut.funcionarios_gerais.FuncionariosADM;
+import br.com.systemfut.funcionarios_gerais.FuncionariosComum;
+
+import java.util.*;
+
+public class Clube {
+    private String nomeDoClube;
+    private long CNPJ;
+    private String razaoSocial;
+<span class="nc" id="L14">    private List&lt;Jogadores&gt; listaDeJogadores = new LinkedList&lt;&gt;();</span>
+    //tenho que ordenar listas por nome e por posição/cargo (jogador por numero da camisa)
+<span class="nc" id="L16">    private List&lt;ComissaoTecnica&gt; listaDeComissaoTecnica = new LinkedList&lt;&gt;();</span>
+<span class="nc" id="L17">    private List&lt;FuncionariosADM&gt; listaDeFuncionariosADM = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L18">    private List&lt;FuncionariosComum&gt; listaDeFuncionariosComum = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L19">    private HashMap&lt;String,String&gt; buscaJogadorPorPosicao = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L20">    private HashMap&lt;String,String&gt; buscaComissaoPorCargo = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L21">    private HashMap&lt;String,String&gt; buscaADMPorCargo = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L22">    private HashMap&lt;String,String&gt; buscaComumPorCargo = new HashMap&lt;&gt;();</span>
+
+    //tenho que criar métodos de busca de maps
+
+<span class="nc" id="L26">    public Clube(String nomeDoClube, long CNPJ, String razaoSocial) {</span>
+<span class="nc" id="L27">        this.nomeDoClube = nomeDoClube;</span>
+<span class="nc" id="L28">        this.CNPJ = CNPJ; //preciso limitar CNPJ para 14 dígitos</span>
+<span class="nc" id="L29">        this.razaoSocial = razaoSocial;</span>
+<span class="nc" id="L30">    }</span>
+
+    public String getNomeDoClube() {
+<span class="nc" id="L33">        return nomeDoClube;</span>
+    }
+
+    public long getCNPJ() {
+<span class="nc" id="L37">        return CNPJ;</span>
+    }
+
+    public String getRazaoSocial() {
+<span class="nc" id="L41">        return razaoSocial;</span>
+    }
+
+    public HashMap&lt;String, String&gt; getBuscaJogadorPorPosicao() {
+<span class="nc" id="L45">        return buscaJogadorPorPosicao;</span>
+    }
+
+    public void adicionaJogadores(Jogadores jogadores){
+<span class="nc" id="L49">        this.listaDeJogadores.add(jogadores);</span>
+<span class="nc" id="L50">        this.buscaComissaoPorCargo.put(jogadores.getPosicao(),jogadores.getNomeCompleto());</span>
+<span class="nc" id="L51">    }</span>
+    public void removeJogadores(Jogadores jogadores){
+<span class="nc" id="L53">        this.listaDeJogadores.remove(jogadores);</span>
+<span class="nc" id="L54">    }</span>
+    public List&lt;Jogadores&gt; getListaDeJogadores() {
+<span class="nc" id="L56">        return Collections.unmodifiableList(listaDeJogadores) ;</span>
+    }
+    public void adicionaComissaoTecnica(ComissaoTecnica comissao){
+<span class="nc" id="L59">        this.listaDeComissaoTecnica.add(comissao);</span>
+<span class="nc" id="L60">        this.buscaJogadorPorPosicao.put(comissao.getCargo(),comissao.getNomeCompleto());</span>
+<span class="nc" id="L61">    }</span>
+    public void removeComissaoTecnica(ComissaoTecnica comissao){
+<span class="nc" id="L63">        this.listaDeComissaoTecnica.remove(comissao);</span>
+<span class="nc" id="L64">    }</span>
+    public List&lt;ComissaoTecnica&gt; getListaDeComissaoTecnica() {
+<span class="nc" id="L66">        return Collections.unmodifiableList(listaDeComissaoTecnica) ;</span>
+    }
+    public void adicionaFuncionariosADM(FuncionariosADM adm){
+<span class="nc" id="L69">        this.listaDeFuncionariosADM.add(adm);</span>
+<span class="nc" id="L70">        this.buscaADMPorCargo.put(adm.getCargo(),adm.getNomeCompleto());</span>
+<span class="nc" id="L71">    }</span>
+    public void removeFuncionariosADM(FuncionariosADM adm){
+<span class="nc" id="L73">        this.listaDeFuncionariosADM.remove(adm);</span>
+<span class="nc" id="L74">    }</span>
+    public List&lt;FuncionariosADM&gt; getListaDeFuncionariosADM() {
+<span class="nc" id="L76">        return Collections.unmodifiableList(listaDeFuncionariosADM) ;</span>
+    }
+    public void adicionaFuncionariosComum(FuncionariosComum comum){
+<span class="nc" id="L79">        this.listaDeFuncionariosComum.add(comum);</span>
+<span class="nc" id="L80">        this.buscaComumPorCargo.put(comum.getCargo(),comum.getNomeCompleto());</span>
+<span class="nc" id="L81">    }</span>
+    public void removeFuncionariosComum(FuncionariosComum comum){
+<span class="nc" id="L83">        this.listaDeFuncionariosComum.remove(comum);</span>
+<span class="nc" id="L84">    }</span>
+    public List&lt;FuncionariosComum&gt; getListaDeFuncionariosComum() {
+<span class="nc" id="L86">        return Collections.unmodifiableList(listaDeFuncionariosComum) ;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
