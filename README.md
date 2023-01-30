@@ -14,10 +14,8 @@ Esse projeto é apenas um esboço, ainda preciso melhorar muita coisa nesse arqu
 Além disso, eu quero melhorar meu código em vários pontos. Um deles é o fato que eu tenho 4 Lists e 4 Maps para armazenar dados de Jogadores, Comissão técnica, Funcionários Comum e Funcionarios Administrativos.
 Como eu decidi fazer uma unmodifiableList e unmodifiableMaps, eu acabei sendo obrigado a ter 4 códigos identicos para cada categoria de funcionário, o que dificulta a manuntenção do mesmo, por isso no futuro eu quero ter um jeito de proteger meu código, sem ter o mesmo quadruplicado.
 
-Esse projeto foi feito no Java 17, usando o IntelliJ, sendo um projeto maven:
-Plugin utilizados:
-Maven Compiler Plugin
-Jacoco
-JUnit
+Esse projeto foi feito no Java 17, usando o IntelliJ, sendo um projeto maven.
+
+Plugin utilizados:Maven Compiler Plugin, Jacoco e JUnit
 
 Espero que venha mais projetos, cada vez mais completos e melhores
