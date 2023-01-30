@@ -7,10 +7,17 @@ Nesse projeto eu coloco em prática algumas coisas que eu aprendi no curso, como
 Uso de getters e setters nos métodos, verificação de método com if, cálculos com atributos, uso de enum para armazenar números, criação de Lists e Maps.
 Dentro dos maps e Lists, criação de unmodifiableList e unmodifiableMaps, métodos próprios de adicionar e remover da List e Maps, organização por nome e cargo.
 Criação de arquivos properties para armazenado de dados de Login.
+Testes automatizados de vários métodos com JUnit.
 E o método que mais fiquei feliz em conseguir fazer, leitura de arquivo .csv e converter o mesmo para criação de Jogadores, Funcionários e Comissão Técnica e ao mesmo tempo adicioná-los em List e Maps de forma automática.
 
 Esse projeto é apenas um esboço, ainda preciso melhorar muita coisa nesse arquivo, como uma criação de interface (que possívelmente no futuro irá se transformar em um aplicativo Android).
 Além disso, eu quero melhorar meu código em vários pontos. Um deles é o fato que eu tenho 4 Lists e 4 Maps para armazenar dados de Jogadores, Comissão técnica, Funcionários Comum e Funcionarios Administrativos.
 Como eu decidi fazer uma unmodifiableList e unmodifiableMaps, eu acabei sendo obrigado a ter 4 códigos identicos para cada categoria de funcionário, o que dificulta a manuntenção do mesmo, por isso no futuro eu quero ter um jeito de proteger meu código, sem ter o mesmo quadruplicado.
+
+Esse projeto foi feito no Java 17, usando o IntelliJ, sendo um projeto maven:
+Plugin utilizados:
+Maven Compiler Plugin
+Jacoco
+JUnit
 
 Espero que venha mais projetos, cada vez mais completos e melhores
