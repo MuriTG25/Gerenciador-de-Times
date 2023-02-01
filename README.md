@@ -6,6 +6,7 @@ Esse projeto tem como motivo principal mostrar o que eu aprendi no curso de "Jav
 Nesse projeto eu coloco em prática algumas coisas que eu aprendi no curso, como criação de classes e objetos, enum, classes abstratas, final class, interface e classes de teste.<br />
 Uso de getters e setters nos métodos, verificação de método com if, cálculos com atributos, uso de enum para armazenar números, criação de Lists e Maps.<br />
 Dentro dos maps e Lists, criação de unmodifiableList e unmodifiableMaps, métodos próprios de adicionar e remover da List e Maps, organização por nome e cargo.<br />
+Throw de exceção em métodos, com uma Exception criada em uma classe própria.<br />
 Criação de arquivos properties para armazenamento de dados de Login.<br />
 Testes automatizados de vários métodos com JUnit.<br />
 E o método que mais fiquei feliz em conseguir fazer, leitura de arquivo .csv e converter o mesmo para criação de Jogadores, Funcionários e Comissão Técnica e ao mesmo tempo adicioná-los em List e Maps de forma automática.
