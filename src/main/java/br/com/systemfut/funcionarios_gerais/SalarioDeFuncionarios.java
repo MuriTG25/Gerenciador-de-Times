@@ -2,7 +2,7 @@ package br.com.systemfut.funcionarios_gerais;
 
 public enum SalarioDeFuncionarios {
     //Cargos Funcionarios comum
-    LIMPEZA_JUNIOR(1100.0),LIMPEZA_PLENO( 1250.0),LIMPEZA_SENIOR(1400.0)
+    LIMPEZA_JUNIOR(1100.0),LIMPEZA_PLENO(1250.0),LIMPEZA_SENIOR(1400.0)
     ,MASSAGISTA_JUNIOR(1500.0),MASSAGISTA_PLENO(1800.0),MASSAGISTA_SENIOR(2100.0),
     ROUPEIRO_JUNIOR(1200.0),ROUPEIRO_PLENO(1400.0),ROUPEIRO_SENIOR(1600.0),
     //Funcionários Administrativos
