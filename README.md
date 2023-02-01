@@ -18,8 +18,8 @@ Como eu decidi fazer uma unmodifiableList e unmodifiableMaps, eu acabei sendo ob
 
 Esse projeto foi feito no Java 17, usando o IntelliJ, sendo um projeto maven.<br />
 Plugin utilizados:<br />
--Maven Compiler Plugin <br />
--Jacoco <br />
--JUnit<br />
+- Maven Compiler Plugin <br />
+- Jacoco <br />
+- JUnit<br />
 
 Espero que venha mais projetos, cada vez mais completos e melhores
