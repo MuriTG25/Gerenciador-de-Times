@@ -2,6 +2,7 @@
 
 import br.com.systemfut.dados_extras.DadosBancarios;
 import br.com.systemfut.dados_extras.DadosPessoais;
+import br.com.systemfut.exception.InvalidNumberException;
 
 import java.util.LinkedList;
 
@@ -12,40 +13,40 @@ public abstract sealed class AtletasEComissao permits Jogadores,ComissaoTecnica 
     private DadosBancarios dadosDoBanco;
     private DadosPessoais dadosPessoais;
 
-<span class="nc" id="L15">    public AtletasEComissao(String nomeCompleto, long CPF) {</span>
-<span class="nc" id="L16">        this.nomeCompleto = nomeCompleto;</span>
-<span class="nc bnc" id="L17" title="All 4 branches missed.">        if(CPF &gt;=10000000000L &amp;&amp; CPF &lt;=99999999999L){</span>
-<span class="nc" id="L18">            this.CPF = CPF;</span>
+<span class="nc" id="L16">    public AtletasEComissao(String nomeCompleto, long CPF) {</span>
+<span class="nc" id="L17">        this.nomeCompleto = nomeCompleto;</span>
+<span class="nc bnc" id="L18" title="All 4 branches missed.">        if(CPF &gt;=10000000000L &amp;&amp; CPF &lt;=99999999999L){</span>
+<span class="nc" id="L19">            this.CPF = CPF;</span>
         }else{
-<span class="nc" id="L20">            throw new ArithmeticException(&quot;Esse CPF é inválido&quot;);</span>
+<span class="nc" id="L21">            throw new InvalidNumberException(&quot;Esse CPF é inválido&quot;);</span>
         }
-<span class="nc" id="L22">    }</span>
+<span class="nc" id="L23">    }</span>
 
     public String getNomeCompleto() {
-<span class="nc" id="L25">        return nomeCompleto;</span>
+<span class="nc" id="L26">        return nomeCompleto;</span>
     }
 
     public long getCPF() {
-<span class="nc" id="L29">        return CPF;</span>
+<span class="nc" id="L30">        return CPF;</span>
     }
 
     public DadosBancarios getDadosDoBanco() {
-<span class="nc" id="L33">        return dadosDoBanco;</span>
+<span class="nc" id="L34">        return dadosDoBanco;</span>
     }
 
     public void setDadosDoBanco(DadosBancarios dadosDoBanco) {
-<span class="nc" id="L37">        this.dadosDoBanco = dadosDoBanco;</span>
-<span class="nc" id="L38">    }</span>
+<span class="nc" id="L38">        this.dadosDoBanco = dadosDoBanco;</span>
+<span class="nc" id="L39">    }</span>
 
     public DadosPessoais getDadosPessoais() {
-<span class="nc" id="L41">        return dadosPessoais;</span>
+<span class="nc" id="L42">        return dadosPessoais;</span>
     }
 
     public void setDadosPessoais(DadosPessoais dadosPessoais) {
-<span class="nc" id="L45">        this.dadosPessoais = dadosPessoais;</span>
-<span class="nc" id="L46">    }</span>
+<span class="nc" id="L46">        this.dadosPessoais = dadosPessoais;</span>
+<span class="nc" id="L47">    }</span>
     public double getSalario() {
-<span class="nc" id="L48">        return salario;</span>
+<span class="nc" id="L49">        return salario;</span>
     }
     public abstract void setSalario(double salario);
 

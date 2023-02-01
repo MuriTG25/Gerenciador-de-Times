@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FuncionariosComum.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.funcionarios_gerais</a> &gt; <span class="el_source">FuncionariosComum.java</span></div><h1>FuncionariosComum.java</h1><pre class="source lang-java linenums">package br.com.systemfut.funcionarios_gerais;
-
+/**
+ * Classe para organizar a lista de Funcionarios fora do setor Administrativo
+ * @author Murilo Bioni Caruso
+ * @version 1.0
+ * @since 2023
+ */
 public final class FuncionariosComum extends FuncionariosGerais {
 
     private String cargo;
     public FuncionariosComum(String nomeCompleto, long CPF, String cargo) {
-<span class="nc" id="L7">        super(nomeCompleto, CPF);</span>
-<span class="nc" id="L8">        this.cargo = cargo;</span>
-<span class="nc" id="L9">    }</span>
+<span class="nc" id="L12">        super(nomeCompleto, CPF);</span>
+<span class="nc" id="L13">        this.cargo = cargo;</span>
+<span class="nc" id="L14">    }</span>
     public String getCargo() {
-<span class="nc" id="L11">        return cargo;</span>
+<span class="nc" id="L16">        return cargo;</span>
     }
 
     public void setCargo(String cargo) {
-<span class="nc" id="L15">        this.cargo = cargo;</span>
-<span class="nc" id="L16">    }</span>
+<span class="nc" id="L20">        this.cargo = cargo;</span>
+<span class="nc" id="L21">    }</span>
 
     @Override
     public String toString() {
-<span class="nc" id="L20">        return &quot;[Nome: &quot;+this.getNomeCompleto()+&quot; / CPF: &quot;+</span>
-<span class="nc" id="L21">                this.getCPF()+&quot; / Cargo: &quot;+this.getCargo()+&quot;]&quot;;</span>
+<span class="nc" id="L25">        return &quot;[Nome: &quot;+this.getNomeCompleto()+&quot; / CPF: &quot;+</span>
+<span class="nc" id="L26">                this.getCPF()+&quot; / Cargo: &quot;+this.getCargo()+&quot;]&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
