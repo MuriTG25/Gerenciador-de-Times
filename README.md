@@ -8,9 +8,10 @@ Uso de getters e setters nos métodos, verificação de método com if, cálculo
 Dentro dos maps e Lists, criação de unmodifiableList e unmodifiableMaps, métodos próprios de adicionar e remover da List e Maps, organização por nome e cargo.<br />
 Uso de expressões lambdas e Method References.<br />
 Throw de exceção em métodos, com uma Exception criada em uma classe própria.<br />
-Criação de arquivos properties para armazenamento de dados de Login.<br />
 Testes automatizados de vários métodos com JUnit.<br />
-E o método que mais fiquei feliz em conseguir fazer, leitura de arquivo .csv e converter o mesmo para criação de Jogadores, Funcionários e Comissão Técnica e ao mesmo tempo adicioná-los em List e Maps de forma automática.
+Leitura e escrita de arquivos com métodos do Java.io como: 
+- Criação de arquivos properties para armazenamento de dados de Login.<br />
+- Leitura de arquivo .csv e converter o mesmo para criação de Jogadores, Funcionários e Comissão Técnica e ao mesmo tempo adicioná-los em List e Maps de forma automática.
 
 Esse projeto é apenas um esboço, ainda preciso melhorar muita coisa nesse arquivo, como uma criação de interface (que possívelmente no futuro irá se transformar em um aplicativo Android).<br />
 Além disso, eu quero melhorar meu código em vários pontos. Um deles é o fato que eu tenho 4 Lists e 4 Maps para armazenar dados de Jogadores, Comissão técnica, Funcionários Comum e Funcionarios Administrativos.<br />
