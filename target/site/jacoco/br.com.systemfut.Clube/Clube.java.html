@@ -4,87 +4,235 @@ import br.com.systemfut.atletas_e_comissao.ComissaoTecnica;
 import br.com.systemfut.atletas_e_comissao.Jogadores;
 import br.com.systemfut.funcionarios_gerais.FuncionariosADM;
 import br.com.systemfut.funcionarios_gerais.FuncionariosComum;
+import br.com.systemfut.funcionarios_gerais.FuncionariosGerais;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Clube {
     private String nomeDoClube;
     private long CNPJ;
     private String razaoSocial;
-<span class="nc" id="L14">    private List&lt;Jogadores&gt; listaDeJogadores = new LinkedList&lt;&gt;();</span>
-    //tenho que ordenar listas por nome e por posição/cargo (jogador por numero da camisa)
-<span class="nc" id="L16">    private List&lt;ComissaoTecnica&gt; listaDeComissaoTecnica = new LinkedList&lt;&gt;();</span>
-<span class="nc" id="L17">    private List&lt;FuncionariosADM&gt; listaDeFuncionariosADM = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L18">    private List&lt;FuncionariosComum&gt; listaDeFuncionariosComum = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L19">    private HashMap&lt;String,String&gt; buscaJogadorPorPosicao = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L20">    private HashMap&lt;String,String&gt; buscaComissaoPorCargo = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L21">    private HashMap&lt;String,String&gt; buscaADMPorCargo = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L22">    private HashMap&lt;String,String&gt; buscaComumPorCargo = new HashMap&lt;&gt;();</span>
-
-    //tenho que criar métodos de busca de maps
+<span class="nc" id="L17">    private LinkedList&lt;Jogadores&gt; listaDeJogadores = new LinkedList&lt;&gt;();</span>
+<span class="nc" id="L18">    private LinkedList&lt;ComissaoTecnica&gt; listaDeComissaoTecnica = new LinkedList&lt;&gt;();</span>
+<span class="nc" id="L19">    private ArrayList&lt;FuncionariosADM&gt; listaDeFuncionariosADM = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L20">    private ArrayList&lt;FuncionariosComum&gt; listaDeFuncionariosComum = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L21">    private LinkedHashMap&lt;String,String&gt; buscaJogadorPorPosicao = new LinkedHashMap&lt;&gt;();</span>
+<span class="nc" id="L22">    private LinkedHashMap&lt;String,String&gt; buscaComissaoPorCargo = new LinkedHashMap&lt;&gt;();</span>
+<span class="nc" id="L23">    private HashMap&lt;String,String&gt; buscaADMPorCargo = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L24">    private HashMap&lt;String,String&gt; buscaComumPorCargo = new HashMap&lt;&gt;();</span>
 
 <span class="nc" id="L26">    public Clube(String nomeDoClube, long CNPJ, String razaoSocial) {</span>
 <span class="nc" id="L27">        this.nomeDoClube = nomeDoClube;</span>
-<span class="nc" id="L28">        this.CNPJ = CNPJ; //preciso limitar CNPJ para 14 dígitos</span>
-<span class="nc" id="L29">        this.razaoSocial = razaoSocial;</span>
-<span class="nc" id="L30">    }</span>
+<span class="nc bnc" id="L28" title="All 4 branches missed.">        if(CNPJ &gt;=10000000000000L &amp;&amp; CNPJ &lt;=99999999999999L){</span>
+<span class="nc" id="L29">            this.CNPJ = CNPJ;</span>
+        }else{
+<span class="nc" id="L31">            throw new ArithmeticException(&quot;Esse CNPJ é inválido&quot;);</span>
+        }
+<span class="nc" id="L33">        this.razaoSocial = razaoSocial;</span>
+<span class="nc" id="L34">    }</span>
 
     public String getNomeDoClube() {
-<span class="nc" id="L33">        return nomeDoClube;</span>
+<span class="nc" id="L37">        return nomeDoClube;</span>
     }
 
     public long getCNPJ() {
-<span class="nc" id="L37">        return CNPJ;</span>
+<span class="nc" id="L41">        return CNPJ;</span>
     }
 
     public String getRazaoSocial() {
-<span class="nc" id="L41">        return razaoSocial;</span>
+<span class="nc" id="L45">        return razaoSocial;</span>
     }
 
     public HashMap&lt;String, String&gt; getBuscaJogadorPorPosicao() {
-<span class="nc" id="L45">        return buscaJogadorPorPosicao;</span>
+<span class="nc" id="L49">        return buscaJogadorPorPosicao;</span>
     }
 
+    //métodos de LinkedList de jogadores
     public void adicionaJogadores(Jogadores jogadores){
-<span class="nc" id="L49">        this.listaDeJogadores.add(jogadores);</span>
-<span class="nc" id="L50">        this.buscaComissaoPorCargo.put(jogadores.getPosicao(),jogadores.getNomeCompleto());</span>
-<span class="nc" id="L51">    }</span>
+<span class="nc" id="L54">        this.listaDeJogadores.add(jogadores);</span>
+<span class="nc" id="L55">        this.buscaJogadorPorPosicao.put(jogadores.getPosicao(),jogadores.getNomeCompleto());</span>
+<span class="nc" id="L56">    }</span>
     public void removeJogadores(Jogadores jogadores){
-<span class="nc" id="L53">        this.listaDeJogadores.remove(jogadores);</span>
-<span class="nc" id="L54">    }</span>
+<span class="nc" id="L58">        this.listaDeJogadores.remove(jogadores);</span>
+<span class="nc" id="L59">        this.buscaJogadorPorPosicao.remove(jogadores.getPosicao(),jogadores.getNomeCompleto());</span>
+<span class="nc" id="L60">    }</span>
     public List&lt;Jogadores&gt; getListaDeJogadores() {
-<span class="nc" id="L56">        return Collections.unmodifiableList(listaDeJogadores) ;</span>
+<span class="nc" id="L62">        return Collections.unmodifiableList(listaDeJogadores) ;</span>
     }
-    public void adicionaComissaoTecnica(ComissaoTecnica comissao){
-<span class="nc" id="L59">        this.listaDeComissaoTecnica.add(comissao);</span>
-<span class="nc" id="L60">        this.buscaJogadorPorPosicao.put(comissao.getCargo(),comissao.getNomeCompleto());</span>
-<span class="nc" id="L61">    }</span>
-    public void removeComissaoTecnica(ComissaoTecnica comissao){
-<span class="nc" id="L63">        this.listaDeComissaoTecnica.remove(comissao);</span>
-<span class="nc" id="L64">    }</span>
-    public List&lt;ComissaoTecnica&gt; getListaDeComissaoTecnica() {
-<span class="nc" id="L66">        return Collections.unmodifiableList(listaDeComissaoTecnica) ;</span>
-    }
-    public void adicionaFuncionariosADM(FuncionariosADM adm){
-<span class="nc" id="L69">        this.listaDeFuncionariosADM.add(adm);</span>
-<span class="nc" id="L70">        this.buscaADMPorCargo.put(adm.getCargo(),adm.getNomeCompleto());</span>
+    public void ordenaListaJogadoresPorNome(){
+<span class="nc" id="L65">        listaDeJogadores.sort(Comparator.comparing</span>
+<span class="nc" id="L66">                (Jogadores::getNomeCompleto));</span>
+<span class="nc" id="L67">    }</span>
+    public void ordenaListaJogadoresPorPosicao(){
+<span class="nc" id="L69">        listaDeJogadores.sort(Comparator.comparing</span>
+<span class="nc" id="L70">                (Jogadores::getPosicao));</span>
 <span class="nc" id="L71">    }</span>
+    //métodos de LinkedList de comissão técnica
+    public void adicionaComissaoTecnica(ComissaoTecnica comissao){
+<span class="nc" id="L74">        this.listaDeComissaoTecnica.add(comissao);</span>
+<span class="nc" id="L75">        this.buscaComissaoPorCargo.put(comissao.getCargo(),comissao.getNomeCompleto());</span>
+<span class="nc" id="L76">    }</span>
+    public void removeComissaoTecnica(ComissaoTecnica comissao){
+<span class="nc" id="L78">        this.listaDeComissaoTecnica.remove(comissao);</span>
+<span class="nc" id="L79">        this.buscaComissaoPorCargo.remove(comissao.getCargo(),comissao.getNomeCompleto());</span>
+<span class="nc" id="L80">    }</span>
+    public List&lt;ComissaoTecnica&gt; getListaDeComissaoTecnica() {
+<span class="nc" id="L82">        return Collections.unmodifiableList(listaDeComissaoTecnica) ;</span>
+    }
+    public void ordenaListaComissaoPorNome(){
+<span class="nc" id="L85">        listaDeComissaoTecnica.sort(Comparator.comparing</span>
+<span class="nc" id="L86">                (ComissaoTecnica::getNomeCompleto));</span>
+<span class="nc" id="L87">    }</span>
+    public void ordenaListaComissaoPorCargo(){
+<span class="nc" id="L89">        listaDeComissaoTecnica.sort(Comparator.comparing</span>
+<span class="nc" id="L90">                (ComissaoTecnica::getCargo));</span>
+<span class="nc" id="L91">    }</span>
+    //métodos de Arraylist de Funcionários ADM
+    public void adicionaFuncionariosADM(FuncionariosADM adm){
+<span class="nc" id="L94">        this.listaDeFuncionariosADM.add(adm);</span>
+<span class="nc" id="L95">        this.buscaADMPorCargo.put(adm.getCargo(),adm.getNomeCompleto());</span>
+<span class="nc" id="L96">    }</span>
     public void removeFuncionariosADM(FuncionariosADM adm){
-<span class="nc" id="L73">        this.listaDeFuncionariosADM.remove(adm);</span>
-<span class="nc" id="L74">    }</span>
+<span class="nc" id="L98">        this.listaDeFuncionariosADM.remove(adm);</span>
+<span class="nc" id="L99">        this.buscaADMPorCargo.remove(adm.getCargo(),adm.getNomeCompleto());</span>
+<span class="nc" id="L100">    }</span>
     public List&lt;FuncionariosADM&gt; getListaDeFuncionariosADM() {
-<span class="nc" id="L76">        return Collections.unmodifiableList(listaDeFuncionariosADM) ;</span>
+<span class="nc" id="L102">        return Collections.unmodifiableList(listaDeFuncionariosADM) ;</span>
     }
+    public void ordenaListaADMPorNome(){
+<span class="nc" id="L105">        listaDeFuncionariosADM.sort(Comparator.comparing(FuncionariosGerais::getNomeCompleto));</span>
+<span class="nc" id="L106">    }</span>
+    public void ordenaListaADMPorCargo(){
+<span class="nc" id="L108">        listaDeFuncionariosADM.sort((c1,c2)-&gt;</span>
+<span class="nc" id="L109">                c1.getCargo().compareTo(c2.getCargo()));</span>
+<span class="nc" id="L110">    }</span>
+    //métodos de Arraylist de Funcionários Comum
     public void adicionaFuncionariosComum(FuncionariosComum comum){
-<span class="nc" id="L79">        this.listaDeFuncionariosComum.add(comum);</span>
-<span class="nc" id="L80">        this.buscaComumPorCargo.put(comum.getCargo(),comum.getNomeCompleto());</span>
-<span class="nc" id="L81">    }</span>
+<span class="nc" id="L113">        this.listaDeFuncionariosComum.add(comum);</span>
+<span class="nc" id="L114">        this.buscaComumPorCargo.put(comum.getCargo(),comum.getNomeCompleto());</span>
+<span class="nc" id="L115">    }</span>
     public void removeFuncionariosComum(FuncionariosComum comum){
-<span class="nc" id="L83">        this.listaDeFuncionariosComum.remove(comum);</span>
-<span class="nc" id="L84">    }</span>
+<span class="nc" id="L117">        this.listaDeFuncionariosComum.remove(comum);</span>
+<span class="nc" id="L118">        this.buscaComumPorCargo.remove(comum.getCargo(),comum.getNomeCompleto());</span>
+<span class="nc" id="L119">    }</span>
     public List&lt;FuncionariosComum&gt; getListaDeFuncionariosComum() {
-<span class="nc" id="L86">        return Collections.unmodifiableList(listaDeFuncionariosComum) ;</span>
+<span class="nc" id="L121">        return Collections.unmodifiableList(listaDeFuncionariosComum) ;</span>
     }
+    public void ordenaListaComumPorNome(){
+<span class="nc" id="L124">        listaDeFuncionariosComum.sort(Comparator.comparing</span>
+<span class="nc" id="L125">                (FuncionariosComum::getNomeCompleto));</span>
+<span class="nc" id="L126">    }</span>
+    public void ordenaListaComumPorCargo() {
+<span class="nc" id="L128">        listaDeFuncionariosComum.sort(Comparator.comparing</span>
+<span class="nc" id="L129">                (FuncionariosComum::getCargo));</span>
+<span class="nc" id="L130">    }</span>
+    //Métodos de LinkedHashMap Jogador
+    public Map&lt;String, String&gt; getbuscaJogadorPorPosicao() {
+<span class="nc" id="L133">        return Collections.unmodifiableMap(buscaJogadorPorPosicao);</span>
+    }
+    public String procuraJogadorPelaPosicao(String posicao){
+<span class="nc" id="L136">        return buscaJogadorPorPosicao.get(posicao);</span>
+    }
+    //Métodos de LinkedHashMap Comissao
+    public Map&lt;String, String&gt; getBuscaComissaoPorCargo() {
+<span class="nc" id="L140">        return Collections.unmodifiableMap(buscaComissaoPorCargo);</span>
+    }
+    public String procuraComissaoPeloCargo(String cargo){
+<span class="nc" id="L143">        return buscaComissaoPorCargo.get(cargo);</span>
+    }
+    //Métodos de HashMap ADM
+    public Map&lt;String, String&gt; getBuscaADMPorCargo() {
+<span class="nc" id="L147">        return Collections.unmodifiableMap(buscaADMPorCargo);</span>
+    }
+    public String procuraADMPeloCargo(String cargo){
+<span class="nc" id="L150">        return buscaADMPorCargo.get(cargo);</span>
+    }
+    //Métodos de HashMap Comum
+    public Map&lt;String, String&gt; getBuscaComumPorCargo() {
+<span class="nc" id="L154">        return Collections.unmodifiableMap(buscaComumPorCargo);</span>
+    }
+    public String procuraComumPeloCargo(String cargo){
+<span class="nc" id="L157">        return buscaComumPorCargo.get(cargo);</span>
+    }
+
+    //métodos de transferir CSV file para List - Jogadores
+    public void leCSVFile(String fileName) throws FileNotFoundException {
+<span class="nc" id="L162">        Scanner scanner = new Scanner(new File(fileName+&quot;.csv&quot;),&quot;UTF-8&quot;);</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">        while(scanner.hasNext()){</span>
+<span class="nc" id="L164">            String linha = scanner.nextLine();</span>
+<span class="nc" id="L165">            Scanner scn = new Scanner(linha);</span>
+<span class="nc" id="L166">            scn.useDelimiter(&quot;,&quot;);</span>
+<span class="nc" id="L167">            String nome = scn.next();</span>
+<span class="nc" id="L168">            long CPF = scn.nextLong();</span>
+<span class="nc" id="L169">            String posicao = scn.next();</span>
+<span class="nc" id="L170">            System.out.format(&quot;Nome: %s CPF: %d Posicao/Cargo: %s \n&quot;</span>
+<span class="nc" id="L171">                    ,nome,CPF,posicao);</span>
+<span class="nc" id="L172">            scn.close();</span>
+<span class="nc" id="L173">        }</span>
+
+<span class="nc" id="L175">        scanner.close();</span>
+<span class="nc" id="L176">    }</span>
+    public void criaJogadoresPorCSV(String fileName, Clube clube) throws FileNotFoundException {
+<span class="nc" id="L178">        Scanner scanner = new Scanner(new File(fileName+&quot;.csv&quot;),&quot;UTF-8&quot;);</span>
+<span class="nc bnc" id="L179" title="All 2 branches missed.">        while(scanner.hasNext()){</span>
+<span class="nc" id="L180">            String linha = scanner.nextLine();</span>
+<span class="nc" id="L181">            Scanner scn = new Scanner(linha);</span>
+<span class="nc" id="L182">            scn.useDelimiter(&quot;,&quot;);</span>
+<span class="nc" id="L183">            String nome = scn.next();</span>
+<span class="nc" id="L184">            long CPF = scn.nextLong();</span>
+<span class="nc" id="L185">            String posicao = scn.next();</span>
+<span class="nc" id="L186">            clube.adicionaJogadores(new Jogadores(nome,CPF,posicao)); ;</span>
+<span class="nc" id="L187">            scn.close();</span>
+<span class="nc" id="L188">        }</span>
+<span class="nc" id="L189">        scanner.close();</span>
+<span class="nc" id="L190">    }</span>
+    //métodos de transferir CSV file para List - Comissao técnica
+    public void criaComissaoPorCSV(String fileName, Clube clube) throws FileNotFoundException {
+<span class="nc" id="L193">        Scanner scanner = new Scanner(new File(fileName+&quot;.csv&quot;),&quot;UTF-8&quot;);</span>
+<span class="nc bnc" id="L194" title="All 2 branches missed.">        while(scanner.hasNext()){</span>
+<span class="nc" id="L195">            String linha = scanner.nextLine();</span>
+<span class="nc" id="L196">            Scanner scn = new Scanner(linha);</span>
+<span class="nc" id="L197">            scn.useDelimiter(&quot;,&quot;);</span>
+<span class="nc" id="L198">            String nome = scn.next();</span>
+<span class="nc" id="L199">            long CPF = scn.nextLong();</span>
+<span class="nc" id="L200">            String cargo = scn.next();</span>
+<span class="nc" id="L201">            clube.adicionaComissaoTecnica(new ComissaoTecnica(nome,CPF,cargo)); ;</span>
+<span class="nc" id="L202">            scn.close();</span>
+<span class="nc" id="L203">        }</span>
+<span class="nc" id="L204">        scanner.close();</span>
+<span class="nc" id="L205">    }</span>
+    //métodos de transferir CSV file para List - FuncionariosAdministrativos
+    public void criaFuncionarioADMPorCSV(String fileName, Clube clube) throws FileNotFoundException {
+<span class="nc" id="L208">        Scanner scanner = new Scanner(new File(fileName+&quot;.csv&quot;),&quot;UTF-8&quot;);</span>
+<span class="nc bnc" id="L209" title="All 2 branches missed.">        while(scanner.hasNext()){</span>
+<span class="nc" id="L210">            String linha = scanner.nextLine();</span>
+<span class="nc" id="L211">            Scanner scn = new Scanner(linha);</span>
+<span class="nc" id="L212">            scn.useDelimiter(&quot;,&quot;);</span>
+<span class="nc" id="L213">            String nome = scn.next();</span>
+<span class="nc" id="L214">            long CPF = scn.nextLong();</span>
+<span class="nc" id="L215">            String cargo = scn.next();</span>
+<span class="nc" id="L216">            clube.adicionaFuncionariosADM(new FuncionariosADM(nome,CPF,cargo)); ;</span>
+<span class="nc" id="L217">            scn.close();</span>
+<span class="nc" id="L218">        }</span>
+<span class="nc" id="L219">        scanner.close();</span>
+<span class="nc" id="L220">    }</span>
+    //métodos de transferir CSV file para List - FuncionariosAdministrativos
+    public void criaFuncionarioComumPorCSV(String fileName, Clube clube) throws FileNotFoundException {
+<span class="nc" id="L223">        Scanner scanner = new Scanner(new File(fileName+&quot;.csv&quot;),&quot;UTF-8&quot;);</span>
+<span class="nc bnc" id="L224" title="All 2 branches missed.">        while(scanner.hasNext()){</span>
+<span class="nc" id="L225">            String linha = scanner.nextLine();</span>
+<span class="nc" id="L226">            Scanner scn = new Scanner(linha);</span>
+<span class="nc" id="L227">            scn.useDelimiter(&quot;,&quot;);</span>
+<span class="nc" id="L228">            String nome = scn.next();</span>
+<span class="nc" id="L229">            long CPF = scn.nextLong();</span>
+<span class="nc" id="L230">            String cargo = scn.next();</span>
+<span class="nc" id="L231">            clube.adicionaFuncionariosComum(new FuncionariosComum(nome,CPF,cargo)); ;</span>
+<span class="nc" id="L232">            scn.close();</span>
+<span class="nc" id="L233">        }</span>
+<span class="nc" id="L234">        scanner.close();</span>
+<span class="nc" id="L235">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

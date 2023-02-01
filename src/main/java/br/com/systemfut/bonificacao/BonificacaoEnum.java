@@ -1,45 +1,20 @@
 package br.com.systemfut.bonificacao;
 
 public enum BonificacaoEnum {
-    JOGADOR{
-        @Override
-        public double bonificacaoTituloPorCargo(){
-            return 0.2;
-        }
+    JOGADOR(0.2, 0.05),COMISSAO_TECNICA(0.2, 0.025)
+    ,FUNCIONARIO_COMUM(0.05,0.0),FUNCIONARIO_ADM(0.1,0.0);
+    private double bonusPorTitulo;
+    private double bonusPorVitoria;
 
-        @Override
-        public double bonificacaoVitoriaPorCargo() {
-            return 0.05;
-        }
-    },COMISSAO_TECNICA{
-        @Override
-        public double bonificacaoTituloPorCargo(){
-            return 0.2;
-        }
-        @Override
-        public double bonificacaoVitoriaPorCargo() {
-            return 0.025;
-        }
-    },FUNCIONARIO_COMUM{
-        @Override
-        public double bonificacaoTituloPorCargo(){
-            return 0.05;
-        }
-        @Override
-        public double bonificacaoVitoriaPorCargo() {
-            return 0.0;
-        }
-    },FUNCIONARIO_ADM{
-        @Override
-        public double bonificacaoTituloPorCargo(){
-            return 0.1;
-        }
-        @Override
-        public double bonificacaoVitoriaPorCargo() {
-            return 0.0;
-        }
+    BonificacaoEnum(double bonusPorTitulo, double bonusPorVitoria) {
+        this.bonusPorTitulo = bonusPorTitulo;
+        this.bonusPorVitoria = bonusPorVitoria;
+    }
+
+    public double bonificacaoTituloPorCargo(){
+        return this.bonusPorTitulo;
     };
-
-    public abstract double bonificacaoTituloPorCargo();
-    public abstract double bonificacaoVitoriaPorCargo();
+    public double bonificacaoVitoriaPorCargo(){
+        return this.bonusPorVitoria;
+    };
 }

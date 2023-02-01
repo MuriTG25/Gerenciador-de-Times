@@ -1,6 +1,8 @@
 br\com\systemfut\dados_extras\DadosBancarios.class
+br\com\systemfut\dados_extras\SenhaDaAreaDeDados.class
 br\com\systemfut\funcionarios_gerais\SalarioDeFuncionarios$7.class
 br\com\systemfut\funcionarios_gerais\SalarioDeFuncionarios$12.class
+br\com\systemfut\main\Principal.class
 br\com\systemfut\atletas_e_comissao\Jogadores.class
 br\com\systemfut\funcionarios_gerais\SalarioDeFuncionarios$5.class
 br\com\systemfut\funcionarios_gerais\SalarioDeFuncionarios$9.class

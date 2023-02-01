@@ -1,24 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FuncionariosADM.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.funcionarios_gerais</a> &gt; <span class="el_source">FuncionariosADM.java</span></div><h1>FuncionariosADM.java</h1><pre class="source lang-java linenums">package br.com.systemfut.funcionarios_gerais;
 
-public non-sealed class FuncionariosADM extends FuncionariosGerais {
+import br.com.systemfut.dados_extras.SenhaDaAreaDeDados;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Properties;
+
+public final class FuncionariosADM extends FuncionariosGerais implements SenhaDaAreaDeDados {
     private String cargo;
 
     public FuncionariosADM(String nomeCompleto, long CPF, String cargo) {
-<span class="nc" id="L7">        super(nomeCompleto, CPF);</span>
-<span class="nc" id="L8">        this.cargo = cargo;</span>
-<span class="nc" id="L9">    }</span>
+<span class="nc" id="L14">        super(nomeCompleto, CPF);</span>
+<span class="nc" id="L15">        this.cargo = cargo;</span>
+<span class="nc" id="L16">    }</span>
     public String getCargo() {
-<span class="nc" id="L11">        return cargo;</span>
+<span class="nc" id="L18">        return cargo;</span>
     }
     public void setCargo(String cargo) {
-<span class="nc" id="L14">        this.cargo = cargo;</span>
-<span class="nc" id="L15">    }</span>
+<span class="nc" id="L21">        this.cargo = cargo;</span>
+<span class="nc" id="L22">    }</span>
 
     @Override
     public String toString() {
-<span class="nc" id="L19">        return &quot;[Nome: &quot; + this.getNomeCompleto() + &quot; / CPF: &quot; +</span>
-<span class="nc" id="L20">                this.getCPF() + &quot; / Cargo: &quot; + this.getCargo() + &quot;]&quot;;</span>
+<span class="nc" id="L26">        return &quot;[Nome: &quot; + this.getNomeCompleto() + &quot; / CPF: &quot; +</span>
+<span class="nc" id="L27">                this.getCPF() + &quot; / Cargo: &quot; + this.getCargo() + &quot;]&quot;;</span>
     }
+    @Override
+    public void setDadosDeLogin(String login, String senha) {
+        try {
+<span class="nc" id="L32">            Properties acesso = new Properties();</span>
+<span class="nc" id="L33">            acesso.setProperty(&quot;login&quot;, login);</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">            if (senha.length() &lt; 6){</span>
+<span class="nc" id="L35">                throw new ArithmeticException(&quot;A senha tem que ter pelo menos 6 dígitos&quot;);</span>
+            }
+<span class="nc" id="L37">            acesso.setProperty(&quot;senha&quot;, senha);</span>
+<span class="nc" id="L38">            acesso.setProperty(&quot;site&quot;, &quot;systemfut.com.br&quot;);</span>
+<span class="nc" id="L39">            acesso.store(new FileWriter(login+&quot;.properties&quot;</span>
+            ),&quot;Login e senha do Funcionario: &quot;
+<span class="nc" id="L41">                    +this.getNomeCompleto()+&quot; / Cargo: &quot;+this.getCargo());</span>
+<span class="nc" id="L42">        } catch (IOException e) {</span>
+<span class="nc" id="L43">            throw new RuntimeException(e);</span>
+<span class="nc" id="L44">        }</span>
+<span class="nc" id="L45">    }</span>
+    @Override
+    public void acessaDadosDeLogin(String filename) {
+        try {
+<span class="nc" id="L49">            Properties acesso = new Properties();</span>
+<span class="nc" id="L50">            acesso.load(new FileReader(filename+&quot;.properties&quot;));</span>
+<span class="nc" id="L51">            String login = acesso.getProperty(&quot;login&quot;);</span>
+<span class="nc" id="L52">            String senha = acesso.getProperty(&quot;senha&quot;);</span>
+<span class="nc" id="L53">            String site = acesso.getProperty(&quot;site&quot;);</span>
+<span class="nc" id="L54">            System.out.println(login+&quot;, &quot;+senha+&quot;, &quot;+site);</span>
+<span class="nc" id="L55">        } catch (IOException e) {</span>
+<span class="nc" id="L56">            throw new RuntimeException(e);</span>
+<span class="nc" id="L57">        }</span>
+<span class="nc" id="L58">    }</span>
 }
 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

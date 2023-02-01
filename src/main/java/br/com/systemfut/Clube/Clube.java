@@ -45,7 +45,7 @@ public class Clube {
         return razaoSocial;
     }
 
-    public HashMap<String, String> getBuscaJogadorPorPosicao() {
+    public LinkedHashMap<String, String> getBuscaJogadorPorPosicao() {
         return buscaJogadorPorPosicao;
     }
 
