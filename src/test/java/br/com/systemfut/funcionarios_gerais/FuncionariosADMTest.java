@@ -1,6 +1,7 @@
 package br.com.systemfut.funcionarios_gerais;
 
 import br.com.systemfut.Clube.Clube;
+import br.com.systemfut.exception.InvalidNumberException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -97,7 +98,7 @@ class FuncionariosADMTest {
     @Test
     public void testaGeradorDeSenhaComMenosde6digitosNumArquivoProperties(){
         criaFuncionarioADMeClube();
-        assertThrows(ArithmeticException.class,() ->
+        assertThrows(InvalidNumberException.class,() ->
                 adm1.setDadosDeLogin("Maicon10","12345"));
     }
     @Test

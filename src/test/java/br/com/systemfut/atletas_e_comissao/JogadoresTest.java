@@ -3,6 +3,7 @@ package br.com.systemfut.atletas_e_comissao;
 import br.com.systemfut.Clube.Clube;
 import br.com.systemfut.dados_extras.DadosBancarios;
 import br.com.systemfut.dados_extras.DadosPessoais;
+import br.com.systemfut.exception.InvalidNumberException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +32,7 @@ class JogadoresTest {
     @Test
     public void TestaJogadorComSalarioMenorque1500(){
         criaJogadorEClube();
-        assertThrows(ArithmeticException.class,
+        assertThrows(InvalidNumberException.class,
                 () -> j1.setSalario(1000.0));
     }
     @Test
@@ -44,7 +45,7 @@ class JogadoresTest {
     @Test
     public void TestaJogadorComSalarioMaiorque50000(){
         criaJogadorEClube();
-        assertThrows(ArithmeticException.class,
+        assertThrows(InvalidNumberException.class,
                 () -> j1.setSalario(100000.0));
     }
     @Test

@@ -1,6 +1,7 @@
 package br.com.systemfut.atletas_e_comissao;
 
 import br.com.systemfut.Clube.Clube;
+import br.com.systemfut.exception.InvalidNumberException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -43,12 +44,12 @@ class ComissaoTecnicaTest {
     @Test
     public void TestaComissaoTecnicaComSalarioMaiorque20000(){
         criaComissaoEClube();
-        assertThrows(ArithmeticException.class,
+        assertThrows(InvalidNumberException.class,
                 () -> t1.setSalario(100000.0));
     }
     @Test
     public void VerificaCPFcomMenosDe11digitos(){
-        assertThrows(ArithmeticException.class,() ->
+        assertThrows(InvalidNumberException.class,() ->
                 new ComissaoTecnica("Lucas",
                         1234567890L, "técnico"));
     }
@@ -61,7 +62,7 @@ class ComissaoTecnicaTest {
     }
     @Test
     public void VerificaCPFcomMaisDe11digitos(){
-        assertThrows(ArithmeticException.class,() ->
+        assertThrows(InvalidNumberException.class,() ->
                 new ComissaoTecnica("Vitor",
                         123456789012L, "técnico"));
     }
@@ -135,7 +136,7 @@ class ComissaoTecnicaTest {
     @Test
     public void testaGeradorDeSenhacomMenosDe6digitosParaComissaoTecnicaNumArquivoProperties(){
         criaComissaoEClube();
-        assertThrows(ArithmeticException.class,() ->
+        assertThrows(InvalidNumberException.class,() ->
                 t1.setDadosDeLogin("Lucas10","12345"));
 
     }

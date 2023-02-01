@@ -1,6 +1,7 @@
 package br.com.systemfut.Clube;
 
 import br.com.systemfut.atletas_e_comissao.ComissaoTecnica;
+import br.com.systemfut.exception.InvalidNumberException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,7 +10,7 @@ class ClubeTest {
 
     @Test
     public void VerificaCNPJcomMenosDe14digitos(){
-        assertThrows(ArithmeticException.class,() ->
+        assertThrows(InvalidNumberException.class,() ->
                 new Clube("Matonense",
                         1234567890123L,"Matonense Futebol Clube"));
     }
@@ -22,7 +23,7 @@ class ClubeTest {
     }
     @Test
     public void VerificaCNPJcomMaisDe14digitos(){
-        assertThrows(ArithmeticException.class,() ->
+        assertThrows(InvalidNumberException.class,() ->
                 new Clube("Matonense",
                         123456789012345L,"Matonense Futebol Clube"));
     }

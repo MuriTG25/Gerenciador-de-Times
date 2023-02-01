@@ -1,5 +1,7 @@
 package br.com.systemfut.dados_extras;
 
+import br.com.systemfut.exception.InvalidNumberException;
+
 import java.time.LocalDate;
 
 public class DadosPessoais {
@@ -20,7 +22,7 @@ public class DadosPessoais {
         if(rg >=100000000L && rg <=999999999L){
         this.RG = rg;
     }else{
-            throw new ArithmeticException("Esse RG é inválido");
+            throw new InvalidNumberException("Esse RG é inválido");
         }
     }
 

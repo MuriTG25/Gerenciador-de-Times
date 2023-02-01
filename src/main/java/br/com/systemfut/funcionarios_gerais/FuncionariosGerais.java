@@ -2,6 +2,7 @@ package br.com.systemfut.funcionarios_gerais;
 
 import br.com.systemfut.dados_extras.DadosBancarios;
 import br.com.systemfut.dados_extras.DadosPessoais;
+import br.com.systemfut.exception.InvalidNumberException;
 
 public abstract sealed class FuncionariosGerais permits FuncionariosADM,FuncionariosComum {
 
@@ -16,7 +17,7 @@ public abstract sealed class FuncionariosGerais permits FuncionariosADM,Funciona
         if(CPF >=10000000000L && CPF <=99999999999L){
             this.CPF = CPF;
         }else{
-            throw new ArithmeticException("Esse CPF é inválido");
+            throw new InvalidNumberException("Esse CPF é inválido");
         };
     }
 

@@ -1,12 +1,18 @@
 package br.com.systemfut.funcionarios_gerais;
 
 import br.com.systemfut.dados_extras.SenhaDaAreaDeDados;
+import br.com.systemfut.exception.InvalidNumberException;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
-
+/**
+ * Classe para organizar os Funcionarios Administrativos
+ * @author Murilo Bioni Caruso
+ * @version 1.0
+ * @since 2023
+ */
 public final class FuncionariosADM extends FuncionariosGerais implements SenhaDaAreaDeDados {
     private String cargo;
 
@@ -32,7 +38,7 @@ public final class FuncionariosADM extends FuncionariosGerais implements SenhaDa
             Properties acesso = new Properties();
             acesso.setProperty("login", login);
             if (senha.length() < 6){
-                throw new ArithmeticException("A senha tem que ter pelo menos 6 dígitos");
+                throw new InvalidNumberException("A senha tem que ter pelo menos 6 dígitos");
             }
             acesso.setProperty("senha", senha);
             acesso.setProperty("site", "systemfut.com.br");

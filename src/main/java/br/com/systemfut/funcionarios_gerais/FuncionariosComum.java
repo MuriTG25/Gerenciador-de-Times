@@ -1,5 +1,10 @@
 package br.com.systemfut.funcionarios_gerais;
-
+/**
+ * Classe para organizar a lista de Funcionarios fora do setor Administrativo
+ * @author Murilo Bioni Caruso
+ * @version 1.0
+ * @since 2023
+ */
 public final class FuncionariosComum extends FuncionariosGerais {
 
     private String cargo;

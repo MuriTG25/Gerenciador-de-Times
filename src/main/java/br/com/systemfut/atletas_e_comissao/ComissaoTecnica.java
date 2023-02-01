@@ -1,12 +1,18 @@
 package br.com.systemfut.atletas_e_comissao;
 
 import br.com.systemfut.dados_extras.SenhaDaAreaDeDados;
+import br.com.systemfut.exception.InvalidNumberException;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
-
+/**
+ * Classe para organizar a Comissão Tecnica
+ * @author Murilo Bioni Caruso
+ * @version 1.0
+ * @since 2023
+ */
 public final class ComissaoTecnica extends AtletasEComissao implements SenhaDaAreaDeDados {
     public ComissaoTecnica(String nomeCompleto, long CPF, String cargo) {
         super(nomeCompleto, CPF);
@@ -27,7 +33,7 @@ public final class ComissaoTecnica extends AtletasEComissao implements SenhaDaAr
         if (s >= 2000.0&& s <=20000.0 ){
             this.salario = s;
         } else {
-            throw new ArithmeticException(
+            throw new InvalidNumberException(
                     "O salário não deve ser menor que 2000 e nem maior que 20000");
         }
     }
@@ -43,7 +49,7 @@ public final class ComissaoTecnica extends AtletasEComissao implements SenhaDaAr
             Properties acesso = new Properties();
             acesso.setProperty("login", login);
             if (senha.length() < 6){
-                throw new ArithmeticException("A senha tem que ter pelo menos 6 dígitos");
+                throw new InvalidNumberException("A senha tem que ter pelo menos 6 dígitos");
             }
             acesso.setProperty("senha", senha);
             acesso.setProperty("site", "systemfut.com.br");

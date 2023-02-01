@@ -2,6 +2,7 @@ package br.com.systemfut.Clube;
 
 import br.com.systemfut.atletas_e_comissao.ComissaoTecnica;
 import br.com.systemfut.atletas_e_comissao.Jogadores;
+import br.com.systemfut.exception.InvalidNumberException;
 import br.com.systemfut.funcionarios_gerais.FuncionariosADM;
 import br.com.systemfut.funcionarios_gerais.FuncionariosComum;
 import br.com.systemfut.funcionarios_gerais.FuncionariosGerais;
@@ -9,8 +10,14 @@ import br.com.systemfut.funcionarios_gerais.FuncionariosGerais;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
-
+/**
+ * Classe para organizar a lista de funcionarios
+ * @author Murilo Bioni Caruso
+ * @version 1.0
+ * @since 2023
+ */
 public class Clube {
+
     private String nomeDoClube;
     private long CNPJ;
     private String razaoSocial;
@@ -28,7 +35,7 @@ public class Clube {
         if(CNPJ >=10000000000000L && CNPJ <=99999999999999L){
             this.CNPJ = CNPJ;
         }else{
-            throw new ArithmeticException("Esse CNPJ é inválido");
+            throw new InvalidNumberException("Esse CNPJ é inválido");
         }
         this.razaoSocial = razaoSocial;
     }
