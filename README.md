@@ -4,6 +4,7 @@ Dentro desses dados, organizamos os dados pessoas, como Nome, RG, CPF, dados ban
 
 Esse projeto tem como motivo principal mostrar o que eu aprendi no curso de "Java e Orientação a Objetos" e outros cursos Java.<br />
 Nesse projeto eu coloco em prática algumas coisas que eu aprendi no curso, como criação de classes e objetos, enum, classes abstratas, final class, interface e classes de teste.<br />
+Uso da bibioteca LocalDate para colocar data de Nacimento, data de admissão e idade.
 Uso de getters e setters nos métodos, verificação de método com if, cálculos com atributos, uso de enum para armazenar números, criação de Lists e Maps.<br />
 A escolha do LinkedList em comissão técnica e em jogadores e ArrayList em Funcionários ADM e Comum se deve ao fato que jogadores e comissão tem uma rotatividade grande, especialmente em times pequenos, por isso optei em uma list que privilegie menos gasto de memória e se organize melhor com exclusão e adição de objetos. Já os outros funcionários, preferi a Array pela rotatividade menor e pelo fato dos clubes de futebol, principalmente os pequenos, não contarem com muitos funcionários. <br /> 
 Dentro dos maps e Lists, criação de unmodifiableList e unmodifiableMaps, métodos próprios de adicionar e remover da List e Maps, organização por nome e cargo.<br />
