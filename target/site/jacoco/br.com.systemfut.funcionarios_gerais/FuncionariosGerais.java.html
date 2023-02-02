@@ -4,56 +4,73 @@ import br.com.systemfut.dados_extras.DadosBancarios;
 import br.com.systemfut.dados_extras.DadosPessoais;
 import br.com.systemfut.exception.InvalidNumberException;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 public abstract sealed class FuncionariosGerais permits FuncionariosADM,FuncionariosComum {
 
     private String nomeCompleto;
     private long CPF;
     private double salario;
+    private LocalDate dataDeAdmissao;
     private DadosBancarios dadosDoBanco;
     private DadosPessoais dadosPessoais;
 
-<span class="nc" id="L15">    public FuncionariosGerais(String nomeCompleto, long CPF) {</span>
-<span class="nc" id="L16">        this.nomeCompleto = nomeCompleto;</span>
-<span class="nc bnc" id="L17" title="All 4 branches missed.">        if(CPF &gt;=10000000000L &amp;&amp; CPF &lt;=99999999999L){</span>
-<span class="nc" id="L18">            this.CPF = CPF;</span>
+<span class="nc" id="L20">    public FuncionariosGerais(String nomeCompleto, long CPF) {</span>
+<span class="nc" id="L21">        this.nomeCompleto = nomeCompleto;</span>
+<span class="nc bnc" id="L22" title="All 4 branches missed.">        if(CPF &gt;=10000000000L &amp;&amp; CPF &lt;=99999999999L){</span>
+<span class="nc" id="L23">            this.CPF = CPF;</span>
         }else{
-<span class="nc" id="L20">            throw new InvalidNumberException(&quot;Esse CPF é inválido&quot;);</span>
+<span class="nc" id="L25">            throw new InvalidNumberException(&quot;Esse CPF é inválido&quot;);</span>
         };
-<span class="nc" id="L22">    }</span>
+<span class="nc" id="L27">    }</span>
 
     public String getNomeCompleto() {
-<span class="nc" id="L25">        return nomeCompleto;</span>
+<span class="nc" id="L30">        return nomeCompleto;</span>
     }
 
     public long getCPF() {
-<span class="nc" id="L29">        return CPF;</span>
+<span class="nc" id="L34">        return CPF;</span>
     }
 
     public DadosBancarios getDadosDoBanco() {
-<span class="nc" id="L33">        return dadosDoBanco;</span>
+<span class="nc" id="L38">        return dadosDoBanco;</span>
     }
 
     public void setDadosDoBanco(DadosBancarios dadosDoBanco) {
 
-<span class="nc" id="L38">        this.dadosDoBanco = dadosDoBanco;</span>
-<span class="nc" id="L39">    }</span>
+<span class="nc" id="L43">        this.dadosDoBanco = dadosDoBanco;</span>
+<span class="nc" id="L44">    }</span>
 
     public DadosPessoais getDadosPessoais() {
 
-<span class="nc" id="L43">        return dadosPessoais;</span>
+<span class="nc" id="L48">        return dadosPessoais;</span>
     }
 
     public void setDadosPessoais(DadosPessoais dadosPessoais) {
 
-<span class="nc" id="L48">        this.dadosPessoais = dadosPessoais;</span>
-<span class="nc" id="L49">    }</span>
+<span class="nc" id="L53">        this.dadosPessoais = dadosPessoais;</span>
+<span class="nc" id="L54">    }</span>
     public double getSalario() {
 
-<span class="nc" id="L52">        return salario;</span>
+<span class="nc" id="L57">        return salario;</span>
     }
     public void setSalario(SalarioDeFuncionarios c) {
 
-<span class="nc" id="L56">        this.salario = c.pagamento();</span>
-<span class="nc" id="L57">    }</span>
+<span class="nc" id="L61">        this.salario = c.pagamento();</span>
+<span class="nc" id="L62">    }</span>
+    public String getDataDeAdmissao() {
+<span class="nc" id="L64">        DateTimeFormatter formato = DateTimeFormatter.ofPattern(&quot;dd/MM/yyyy&quot;);</span>
+<span class="nc" id="L65">        return dataDeAdmissao.format(formato);</span>
+    }
+    public Period tempoDeTrabalho(){
+<span class="nc" id="L68">        LocalDate agora = LocalDate.now();</span>
+<span class="nc" id="L69">        return Period.between(this.dataDeAdmissao, agora);</span>
+    }
+
+    public void setDataDeAdmissao(int dia, int mes, int ano) {
+<span class="nc" id="L73">        this.dataDeAdmissao = LocalDate.of(ano,mes,dia);</span>
+<span class="nc" id="L74">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

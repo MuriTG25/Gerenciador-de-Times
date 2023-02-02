@@ -1,5 +1,6 @@
 br\com\systemfut\dados_extras\DadosBancarios.class
 br\com\systemfut\dados_extras\SenhaDaAreaDeDados.class
+br\com\systemfut\dados_extras\SenhaDaAreaDeDadosMetodos.class
 br\com\systemfut\main\Principal.class
 br\com\systemfut\atletas_e_comissao\Jogadores.class
 br\com\systemfut\exception\InvalidNumberException.class

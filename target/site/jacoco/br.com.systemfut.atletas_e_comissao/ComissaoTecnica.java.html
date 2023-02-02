@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ComissaoTecnica.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.atletas_e_comissao</a> &gt; <span class="el_source">ComissaoTecnica.java</span></div><h1>ComissaoTecnica.java</h1><pre class="source lang-java linenums">package br.com.systemfut.atletas_e_comissao;
 
 import br.com.systemfut.dados_extras.SenhaDaAreaDeDados;
+import br.com.systemfut.dados_extras.SenhaDaAreaDeDadosMetodos;
 import br.com.systemfut.exception.InvalidNumberException;
 
 import java.io.FileReader;
@@ -15,64 +16,43 @@ import java.util.Properties;
  */
 public final class ComissaoTecnica extends AtletasEComissao implements SenhaDaAreaDeDados {
     public ComissaoTecnica(String nomeCompleto, long CPF, String cargo) {
-<span class="nc" id="L18">        super(nomeCompleto, CPF);</span>
-<span class="nc" id="L19">        this.cargo = cargo;</span>
-<span class="nc" id="L20">    }</span>
+<span class="nc" id="L19">        super(nomeCompleto, CPF);</span>
+<span class="nc" id="L20">        this.cargo = cargo;</span>
+<span class="nc" id="L21">        this.senha = new SenhaDaAreaDeDadosMetodos();</span>
+<span class="nc" id="L22">    }</span>
 
     private String cargo;
-
+    private SenhaDaAreaDeDadosMetodos senha;
 
     public String getCargo() {
-<span class="nc" id="L26">        return cargo;</span>
+<span class="nc" id="L28">        return cargo;</span>
     }
     public void setCargo(String cargo) {
-<span class="nc" id="L29">        this.cargo = cargo;</span>
-<span class="nc" id="L30">    }</span>
+<span class="nc" id="L31">        this.cargo = cargo;</span>
+<span class="nc" id="L32">    }</span>
     @Override
     public void setSalario(double s) {
-<span class="nc bnc" id="L33" title="All 4 branches missed.">        if (s &gt;= 2000.0&amp;&amp; s &lt;=20000.0 ){</span>
-<span class="nc" id="L34">            this.salario = s;</span>
+<span class="nc bnc" id="L35" title="All 4 branches missed.">        if (s &gt;= 2000.0&amp;&amp; s &lt;=20000.0 ){</span>
+<span class="nc" id="L36">            this.salario = s;</span>
         } else {
-<span class="nc" id="L36">            throw new InvalidNumberException(</span>
+<span class="nc" id="L38">            throw new InvalidNumberException(</span>
                     &quot;O salário não deve ser menor que 2000 e nem maior que 20000&quot;);
         }
-<span class="nc" id="L39">    }</span>
+<span class="nc" id="L41">    }</span>
     @Override
     public String toString() {
-<span class="nc" id="L42">        return &quot;[Nome: &quot;+this.getNomeCompleto()+&quot; / CPF: &quot;+</span>
-<span class="nc" id="L43">                this.getCPF()+&quot; / Cargo: &quot;+this.getCargo()+&quot;]&quot;;</span>
+<span class="nc" id="L44">        return &quot;[Nome: &quot;+this.getNomeCompleto()+&quot; / CPF: &quot;+</span>
+<span class="nc" id="L45">                this.getCPF()+&quot; / Cargo: &quot;+this.getCargo()+&quot;]&quot;;</span>
     }
 
     @Override
     public void setDadosDeLogin(String login, String senha) {
-        try {
-<span class="nc" id="L49">            Properties acesso = new Properties();</span>
-<span class="nc" id="L50">            acesso.setProperty(&quot;login&quot;, login);</span>
-<span class="nc bnc" id="L51" title="All 2 branches missed.">            if (senha.length() &lt; 6){</span>
-<span class="nc" id="L52">                throw new InvalidNumberException(&quot;A senha tem que ter pelo menos 6 dígitos&quot;);</span>
-            }
-<span class="nc" id="L54">            acesso.setProperty(&quot;senha&quot;, senha);</span>
-<span class="nc" id="L55">            acesso.setProperty(&quot;site&quot;, &quot;systemfut.com.br&quot;);</span>
-<span class="nc" id="L56">            acesso.store(new FileWriter(login+&quot;.properties&quot;</span>
-            ),&quot;Login e senha do Funcionario: &quot;+
-<span class="nc" id="L58">                    this.getNomeCompleto()+&quot; / Cargo: &quot;+this.getCargo());</span>
-<span class="nc" id="L59">        } catch (IOException e) {</span>
-<span class="nc" id="L60">            throw new RuntimeException(e);</span>
-<span class="nc" id="L61">        }</span>
-<span class="nc" id="L62">    }</span>
+<span class="nc" id="L50">        this.senha.setDadosDeLogin(login,senha);</span>
+<span class="nc" id="L51">    }</span>
 
     @Override
     public void acessaDadosDeLogin(String filename) {
-        try {
-<span class="nc" id="L67">            Properties acesso = new Properties();</span>
-<span class="nc" id="L68">            acesso.load(new FileReader(filename+&quot;.properties&quot;));</span>
-<span class="nc" id="L69">            String login = acesso.getProperty(&quot;login&quot;);</span>
-<span class="nc" id="L70">            String senha = acesso.getProperty(&quot;senha&quot;);</span>
-<span class="nc" id="L71">            String site = acesso.getProperty(&quot;site&quot;);</span>
-<span class="nc" id="L72">            System.out.println(login+&quot;, &quot;+senha+&quot;, &quot;+site);</span>
-<span class="nc" id="L73">        } catch (IOException e) {</span>
-<span class="nc" id="L74">            throw new RuntimeException(e);</span>
-<span class="nc" id="L75">        }</span>
-<span class="nc" id="L76">    }</span>
+<span class="nc" id="L55">        this.senha.acessaDadosDeLogin(filename);</span>
+<span class="nc" id="L56">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

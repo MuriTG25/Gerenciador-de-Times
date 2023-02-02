@@ -3,8 +3,10 @@
 import br.com.systemfut.exception.InvalidNumberException;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
-<span class="nc" id="L7">public class DadosPessoais {</span>
+<span class="nc" id="L9">public class DadosPessoais {</span>
     private long RG;
     private String endereco;
     private short numeroEndereco;
@@ -13,75 +15,87 @@ import java.time.LocalDate;
     private String estado;
     private String paisOndeMora;
     private String estadoCivil;
+    private LocalDate dataDeNascimento;
 
     public long getRG() {
-<span class="nc" id="L18">        return RG;</span>
+<span class="nc" id="L21">        return RG;</span>
     }
 
     public void setRG(long rg) {
-<span class="nc bnc" id="L22" title="All 4 branches missed.">        if(rg &gt;=100000000L &amp;&amp; rg &lt;=999999999L){</span>
-<span class="nc" id="L23">        this.RG = rg;</span>
+<span class="nc bnc" id="L25" title="All 4 branches missed.">        if(rg &gt;=100000000L &amp;&amp; rg &lt;=999999999L){</span>
+<span class="nc" id="L26">        this.RG = rg;</span>
     }else{
-<span class="nc" id="L25">            throw new InvalidNumberException(&quot;Esse RG é inválido&quot;);</span>
+<span class="nc" id="L28">            throw new InvalidNumberException(&quot;Esse RG é inválido&quot;);</span>
         }
-<span class="nc" id="L27">    }</span>
+<span class="nc" id="L30">    }</span>
 
     public String getEndereco() {
-<span class="nc" id="L30">        return endereco;</span>
+<span class="nc" id="L33">        return endereco;</span>
     }
 
     public void setEndereco(String endereco) {
-<span class="nc" id="L34">        this.endereco = endereco;</span>
-<span class="nc" id="L35">    }</span>
+<span class="nc" id="L37">        this.endereco = endereco;</span>
+<span class="nc" id="L38">    }</span>
 
     public short getNumeroEndereco() {
-<span class="nc" id="L38">        return numeroEndereco;</span>
+<span class="nc" id="L41">        return numeroEndereco;</span>
     }
 
     public void setNumeroEndereco(short numeroEndereco) {
-<span class="nc" id="L42">        this.numeroEndereco = numeroEndereco;</span>
-<span class="nc" id="L43">    }</span>
+<span class="nc" id="L45">        this.numeroEndereco = numeroEndereco;</span>
+<span class="nc" id="L46">    }</span>
 
     public String getComplemento() {
-<span class="nc" id="L46">        return complemento;</span>
+<span class="nc" id="L49">        return complemento;</span>
     }
 
     public void setComplemento(String complemento) {
-<span class="nc" id="L50">        this.complemento = complemento;</span>
-<span class="nc" id="L51">    }</span>
+<span class="nc" id="L53">        this.complemento = complemento;</span>
+<span class="nc" id="L54">    }</span>
 
     public String getCidade() {
-<span class="nc" id="L54">        return cidade;</span>
+<span class="nc" id="L57">        return cidade;</span>
     }
 
     public void setCidade(String cidade) {
-<span class="nc" id="L58">        this.cidade = cidade;</span>
-<span class="nc" id="L59">    }</span>
+<span class="nc" id="L61">        this.cidade = cidade;</span>
+<span class="nc" id="L62">    }</span>
 
     public String getEstado() {
-<span class="nc" id="L62">        return estado;</span>
+<span class="nc" id="L65">        return estado;</span>
     }
 
     public void setEstado(String estado) {
-<span class="nc" id="L66">        this.estado = estado;</span>
-<span class="nc" id="L67">    }</span>
+<span class="nc" id="L69">        this.estado = estado;</span>
+<span class="nc" id="L70">    }</span>
 
     public String getPaisOndeMora() {
-<span class="nc" id="L70">        return paisOndeMora;</span>
+<span class="nc" id="L73">        return paisOndeMora;</span>
     }
 
     public void setPaisOndeMora(String paisOndeMora) {
-<span class="nc" id="L74">        this.paisOndeMora = paisOndeMora;</span>
-<span class="nc" id="L75">    }</span>
+<span class="nc" id="L77">        this.paisOndeMora = paisOndeMora;</span>
+<span class="nc" id="L78">    }</span>
     public String getEstadoCivil() {
 
-<span class="nc" id="L78">        return estadoCivil;</span>
+<span class="nc" id="L81">        return estadoCivil;</span>
     }
-
     public void setEstadoCivil(String estadoCivil) {
 
-<span class="nc" id="L83">        this.estadoCivil = estadoCivil;</span>
-<span class="nc" id="L84">    }</span>
+<span class="nc" id="L85">        this.estadoCivil = estadoCivil;</span>
+<span class="nc" id="L86">    }</span>
+    public String getDataDeNascimento() {
+<span class="nc" id="L88">        DateTimeFormatter formato = DateTimeFormatter.ofPattern(&quot;dd/MM/yyyy&quot;);</span>
+<span class="nc" id="L89">        return dataDeNascimento.format(formato);</span>
+    }
+    public int getIdade(){
+<span class="nc" id="L92">        LocalDate agora = LocalDate.now();</span>
+<span class="nc" id="L93">        Period periodo = Period.between(this.dataDeNascimento, agora);</span>
+<span class="nc" id="L94">        return periodo.getYears();</span>
+    }
+    public void setDataDeNascimento(int dia, int mes, int ano) {
+<span class="nc" id="L97">        this.dataDeNascimento = LocalDate.of(ano,mes,dia);</span>
+<span class="nc" id="L98">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
