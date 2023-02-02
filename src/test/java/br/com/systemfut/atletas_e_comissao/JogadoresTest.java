@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
+import java.time.DateTimeException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -54,6 +55,22 @@ class JogadoresTest {
         String toString = j1.toString();
         assertEquals("[Nome: Lucas /"+
                 " CPF: 34565476890 / Posicao: Atacante]",toString);
+    }
+    @Test
+    public void TestaDataDeAdmisaoDoJogador(){
+        criaJogadorEClube();
+        j1.setDataDeAdmissao(25,04,2016);
+        String dataDeAdmissao = j1.getDataDeAdmissao();
+        assertEquals("25/04/2016",dataDeAdmissao);
+        String tempoDeTrabalho = j1.tempoDeTrabalho().toString();
+        assertEquals("P6Y9M8D",tempoDeTrabalho);
+    }
+    @Test
+    public void TestaDatasInvalidasDeDiaMesEDia2902ForaDeAnoBissexto(){
+        criaJogadorEClube();
+        assertThrows(DateTimeException.class,() -> j1.setDataDeAdmissao(33,06,2020));
+        assertThrows(DateTimeException.class,() -> j1.setDataDeAdmissao(30,13,2020));
+        assertThrows(DateTimeException.class,() -> j1.setDataDeAdmissao(29,02,2021));
     }
     @Test
     public void TestaLinkedListDeJogadores(){

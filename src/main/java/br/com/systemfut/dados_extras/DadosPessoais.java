@@ -3,6 +3,8 @@ package br.com.systemfut.dados_extras;
 import br.com.systemfut.exception.InvalidNumberException;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class DadosPessoais {
     private long RG;
@@ -13,6 +15,7 @@ public class DadosPessoais {
     private String estado;
     private String paisOndeMora;
     private String estadoCivil;
+    private LocalDate dataDeNascimento;
 
     public long getRG() {
         return RG;
@@ -77,10 +80,21 @@ public class DadosPessoais {
 
         return estadoCivil;
     }
-
     public void setEstadoCivil(String estadoCivil) {
 
         this.estadoCivil = estadoCivil;
+    }
+    public String getDataDeNascimento() {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return dataDeNascimento.format(formato);
+    }
+    public int getIdade(){
+        LocalDate agora = LocalDate.now();
+        Period periodo = Period.between(this.dataDeNascimento, agora);
+        return periodo.getYears();
+    }
+    public void setDataDeNascimento(int dia, int mes, int ano) {
+        this.dataDeNascimento = LocalDate.of(ano,mes,dia);
     }
 
 }

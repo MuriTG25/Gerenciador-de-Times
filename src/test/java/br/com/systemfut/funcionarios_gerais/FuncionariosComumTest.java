@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
+import java.time.DateTimeException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,6 +35,22 @@ class FuncionariosComumTest {
         String toString = fc1.toString();
         assertEquals("[Nome: Maicon / CPF: 32456789043"+
                 " / Cargo: Auxiliar de Limpeza Junior]", toString);
+    }
+    @Test
+    public void TestaDataDeAdmisaoDoJogador(){
+        criaFuncionarioComumEClube();
+        fc1.setDataDeAdmissao(25,06,2020);
+        String dataDeAdmissao = fc1.getDataDeAdmissao();
+        assertEquals("25/06/2020",dataDeAdmissao);
+        String tempoDeTrabalho = fc1.tempoDeTrabalho().toString();
+        assertEquals("P2Y7M8D",tempoDeTrabalho);
+    }
+    @Test
+    public void TestaDatasInvalidasDeDiaMesEDia2902ForaDeAnoBissexto(){
+        criaFuncionarioComumEClube();
+        assertThrows(DateTimeException.class,() -> fc1.setDataDeAdmissao(33,06,2020));
+        assertThrows(DateTimeException.class,() -> fc1.setDataDeAdmissao(30,13,2020));
+        assertThrows(DateTimeException.class,() -> fc1.setDataDeAdmissao(29,02,2021));
     }
     @Test
     public void TestaArrayListDeFuncionariosComum(){

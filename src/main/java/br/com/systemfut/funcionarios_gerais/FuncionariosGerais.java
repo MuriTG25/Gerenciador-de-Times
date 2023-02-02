@@ -4,11 +4,16 @@ import br.com.systemfut.dados_extras.DadosBancarios;
 import br.com.systemfut.dados_extras.DadosPessoais;
 import br.com.systemfut.exception.InvalidNumberException;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 public abstract sealed class FuncionariosGerais permits FuncionariosADM,FuncionariosComum {
 
     private String nomeCompleto;
     private long CPF;
     private double salario;
+    private LocalDate dataDeAdmissao;
     private DadosBancarios dadosDoBanco;
     private DadosPessoais dadosPessoais;
 
@@ -54,5 +59,17 @@ public abstract sealed class FuncionariosGerais permits FuncionariosADM,Funciona
     public void setSalario(SalarioDeFuncionarios c) {
 
         this.salario = c.pagamento();
+    }
+    public String getDataDeAdmissao() {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return dataDeAdmissao.format(formato);
+    }
+    public Period tempoDeTrabalho(){
+        LocalDate agora = LocalDate.now();
+        return Period.between(this.dataDeAdmissao, agora);
+    }
+
+    public void setDataDeAdmissao(int dia, int mes, int ano) {
+        this.dataDeAdmissao = LocalDate.of(ano,mes,dia);
     }
 }
