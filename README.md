@@ -27,7 +27,7 @@ Outras melhorias:
 - Uso do HTTP Request para pegar um json de lista de Bancos quem tem no Brasil e transformando-o em maps (ainda necessita de melhorias)
 - Refatoracao grande na lista de Funcionarios, e divisão do mesmo em vários arquivos
 - Refatoracão em Bonificação
-- Verificação de todos os testes em Junit, até aqueles que retornam uma resposta em System.out.println ou criação de arquivo
+- Automatização de todos os testes em Junit, até aqueles que retornam uma resposta de um texto console ou criação de arquivo
 
 Esse projeto foi feito no Java 17, usando o IntelliJ, sendo um projeto maven.<br />
 Plugin utilizados:<br />
