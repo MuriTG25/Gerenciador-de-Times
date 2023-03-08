@@ -4,26 +4,6 @@ Serve para armazenar dados referentes aos funcionários, como dados pessoais, en
 Podemos gerenciar coisas relacionadas ao mesmo, como bonificação, reajuste salarial, listas dos mesmos, exportação e importação de lista.<br />
 Esse projeto ainda é bem simples, ainda não possui uma interface, mas no 2º semestre de 2023 deve se transformar em um aplicativo Android.<br />
 
-# Versão 1.0
-
-Esse projeto tem como motivo principal mostrar o que eu aprendi no curso de "Java e Orientação a Objetos" e outros cursos Java.<br />
-Nesse projeto eu coloco em prática algumas coisas que eu aprendi no curso, como criação de classes e objetos, enum, classes abstratas, final class, interface e classes de teste.<br />
-Uso de getters e setters nos métodos, verificação de método com if, cálculos com atributos, uso de enum para armazenar números, criação de Lists e Maps.<br />
-A escolha do LinkedList em comissão técnica e em jogadores e ArrayList em Funcionários ADM e Comum se deve ao fato que jogadores e comissão tem uma rotatividade grande, especialmente em times pequenos, por isso optei em uma list que privilegie menos gasto de memória e se organize melhor com exclusão e adição de objetos. Já os outros funcionários, preferi a Array pela rotatividade menor e pelo fato dos clubes de futebol, principalmente os pequenos, não contarem com muitos funcionários. <br /> 
-Dentro dos maps e Lists, criação de unmodifiableList e unmodifiableMaps, métodos próprios de adicionar e remover da List e Maps, organização por nome e cargo.<br />
-Uso de expressões lambdas e Method References.<br />
-Throw de exceção em métodos, com uma Exception criada em uma classe própria.<br />
-Testes automatizados de vários métodos com JUnit.<br />
-Leitura e escrita de arquivos com métodos do Java.io como: 
-- Criação de arquivos properties para armazenamento de dados de Login.<br />
-- Leitura de arquivo .csv e converter o mesmo para criação de Jogadores, Funcionários e Comissão Técnica e ao mesmo tempo adicioná-los em List e Maps de forma automática.
-
-Esse projeto foi feito no Java 17, usando o IntelliJ, sendo um projeto maven.<br />
-Plugin utilizados:<br />
-- Maven Compiler Plugin <br />
-- Jacoco <br />
-- JUnit<br />
-
 # Versão 1.1
 
 Esse projeto tem como motivo principal mostrar o que eu aprendi no curso de "Aprofunde em Java com arquitetura e padrões de projeto" e outros cursos Java.<br />
@@ -57,6 +37,26 @@ Plugin utilizados:<br />
 - OpenCSV
 - Spring-Boot Starter Test
 - Junit5 Capture System Output Extension
+
+# Versão 1.0
+
+Esse projeto tem como motivo principal mostrar o que eu aprendi no curso de "Java e Orientação a Objetos" e outros cursos Java.<br />
+Nesse projeto eu coloco em prática algumas coisas que eu aprendi no curso, como criação de classes e objetos, enum, classes abstratas, final class, interface e classes de teste.<br />
+Uso de getters e setters nos métodos, verificação de método com if, cálculos com atributos, uso de enum para armazenar números, criação de Lists e Maps.<br />
+A escolha do LinkedList em comissão técnica e em jogadores e ArrayList em Funcionários ADM e Comum se deve ao fato que jogadores e comissão tem uma rotatividade grande, especialmente em times pequenos, por isso optei em uma list que privilegie menos gasto de memória e se organize melhor com exclusão e adição de objetos. Já os outros funcionários, preferi a Array pela rotatividade menor e pelo fato dos clubes de futebol, principalmente os pequenos, não contarem com muitos funcionários. <br /> 
+Dentro dos maps e Lists, criação de unmodifiableList e unmodifiableMaps, métodos próprios de adicionar e remover da List e Maps, organização por nome e cargo.<br />
+Uso de expressões lambdas e Method References.<br />
+Throw de exceção em métodos, com uma Exception criada em uma classe própria.<br />
+Testes automatizados de vários métodos com JUnit.<br />
+Leitura e escrita de arquivos com métodos do Java.io como: 
+- Criação de arquivos properties para armazenamento de dados de Login.<br />
+- Leitura de arquivo .csv e converter o mesmo para criação de Jogadores, Funcionários e Comissão Técnica e ao mesmo tempo adicioná-los em List e Maps de forma automática.
+
+Esse projeto foi feito no Java 17, usando o IntelliJ, sendo um projeto maven.<br />
+Plugin utilizados:<br />
+- Maven Compiler Plugin <br />
+- Jacoco <br />
+- JUnit<br />
 
 # Próximos passos:
 - Converter esse projeto em Kotlin
