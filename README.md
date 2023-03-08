@@ -38,6 +38,13 @@ Plugin utilizados:<br />
 - Spring-Boot Starter Test
 - Junit5 Capture System Output Extension
 
+# Próximos passos:
+- Converter esse projeto em Kotlin
+- Vincular esse projeto a um banco de dados
+- Usar esse projeto para gerar um APP
+- Criar a interface do APP
+
+# Versões Anteriores
 # Versão 1.0
 
 Esse projeto tem como motivo principal mostrar o que eu aprendi no curso de "Java e Orientação a Objetos" e outros cursos Java.<br />
@@ -51,15 +58,3 @@ Testes automatizados de vários métodos com JUnit.<br />
 Leitura e escrita de arquivos com métodos do Java.io como: 
 - Criação de arquivos properties para armazenamento de dados de Login.<br />
 - Leitura de arquivo .csv e converter o mesmo para criação de Jogadores, Funcionários e Comissão Técnica e ao mesmo tempo adicioná-los em List e Maps de forma automática.
-
-Esse projeto foi feito no Java 17, usando o IntelliJ, sendo um projeto maven.<br />
-Plugin utilizados:<br />
-- Maven Compiler Plugin <br />
-- Jacoco <br />
-- JUnit<br />
-
-# Próximos passos:
-- Converter esse projeto em Kotlin
-- Vincular esse projeto a um banco de dados
-- Usar esse projeto para gerar um APP
-- Criar a interface do APP
