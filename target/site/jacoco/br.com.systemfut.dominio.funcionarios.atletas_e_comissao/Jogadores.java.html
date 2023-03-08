@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Jogadores.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.dominio.funcionarios.atletas_e_comissao</a> &gt; <span class="el_source">Jogadores.java</span></div><h1>Jogadores.java</h1><pre class="source lang-java linenums">package br.com.systemfut.dominio.funcionarios.atletas_e_comissao;
+
+import br.com.systemfut.aplicacao.exception.ValorInvalidoException;
+import br.com.systemfut.aplicacao.reajuste.ReajusteService;
+import br.com.systemfut.dominio.funcionarios.atributos_Funcionarios.CPF;
+import br.com.systemfut.dominio.funcionarios.InterfaceSalario;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+/**
+ * Classe para organizar os Jogadores
+ * @author Murilo Bioni Caruso
+ * @version 1.1
+ * @since 2023
+ */
+public final class Jogadores extends AtletasEComissao implements InterfaceSalario {
+    private String posicao;
+    private short numeroDaCamisa;
+
+    public Jogadores(String nomeCompleto, CPF CPF, String posicao) {
+<span class="nc" id="L22">        super(nomeCompleto, CPF);</span>
+<span class="nc" id="L23">        this.posicao = posicao;</span>
+<span class="nc" id="L24">    }</span>
+    public String getPosicao() {
+<span class="nc" id="L26">        return posicao;</span>
+    }
+    public void setPosicao(String posicao) {
+<span class="nc" id="L29">        this.posicao = posicao;</span>
+<span class="nc" id="L30">    }</span>
+    public short getNumeroDaCamisa() {
+<span class="nc" id="L32">        return numeroDaCamisa;</span>
+    }
+    public void setNumeroDaCamisa(short numeroDaCamisa) {
+<span class="nc" id="L35">        this.numeroDaCamisa = numeroDaCamisa;</span>
+<span class="nc" id="L36">    }</span>
+    @Override
+    public void setSalario(BigDecimal salario) {
+<span class="nc bnc" id="L39" title="All 4 branches missed.">        if (salario.compareTo(new BigDecimal(&quot;1500.0&quot;))&lt; 0 || salario.compareTo(new BigDecimal(&quot;50000.0&quot;))&gt;0){</span>
+<span class="nc" id="L40">            throw new ValorInvalidoException(</span>
+                    &quot;O salário não deve ser menor que 1500 e nem maior que 50000&quot;);
+        }
+<span class="nc" id="L43">        this.salario = salario.setScale(2);</span>
+<span class="nc" id="L44">    }</span>
+    @Override
+    public String toString() {
+<span class="nc" id="L47">        return &quot;[Nome: &quot;+this.getNomeCompleto()+&quot; / CPF: &quot;+</span>
+<span class="nc" id="L48">                this.getCPF()+&quot; / Posicao: &quot;+this.getPosicao()+&quot;]&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

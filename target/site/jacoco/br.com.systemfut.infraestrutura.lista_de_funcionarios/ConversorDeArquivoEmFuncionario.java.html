@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConversorDeArquivoEmFuncionario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.infraestrutura.lista_de_funcionarios</a> &gt; <span class="el_source">ConversorDeArquivoEmFuncionario.java</span></div><h1>ConversorDeArquivoEmFuncionario.java</h1><pre class="source lang-java linenums">package br.com.systemfut.infraestrutura.lista_de_funcionarios;
+
+import br.com.systemfut.infraestrutura.lista_de_funcionarios.conversor.ConversorDeArquivo;
+import br.com.systemfut.infraestrutura.lista_de_funcionarios.tipo_funcionario.ConversorDeFuncionario;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+/**
+ * Classe de importacao e exportacao de arquivos externos para lista de funcionarios
+ * @author Murilo Bioni Caruso
+ * @version 1.1
+ * @since 2023
+ */
+
+<span class="nc" id="L16">public class ConversorDeArquivoEmFuncionario implements LeitorDeArquivo {</span>
+
+    @Override
+    public void importaArquivoParaListaDeFuncionarios(String nomeArquivo, ConversorDeFuncionario
+            tipoFuncionario, ConversorDeArquivo tipoArquivo) throws FileNotFoundException {
+<span class="nc" id="L21">        List&lt;String&gt; lista = tipoArquivo.ImportadorDeArquivoEmList(nomeArquivo);</span>
+<span class="nc" id="L22">        tipoFuncionario.criaFuncionarioPeloImporte(lista);</span>
+<span class="nc" id="L23">    }</span>
+
+    @Override
+    public void leArquivoNaTela(String nomeArquivo, ConversorDeArquivo tipoArquivo) throws FileNotFoundException {
+<span class="nc" id="L27">        List&lt;String&gt; lista = tipoArquivo.ImportadorDeArquivoEmList(nomeArquivo);</span>
+<span class="nc" id="L28">        imprimiNaTela(lista);</span>
+<span class="nc" id="L29">    }</span>
+//metodo ainda não implementado
+    @Override
+    public void exportaListaFuncionariosParaArquivo(String nomeArquivo, ConversorDeFuncionario
+            tipoFuncionario, ConversorDeArquivo tipoArquivo) throws IOException {
+<span class="nc" id="L34">        List&lt;String[]&gt; lista = tipoFuncionario.exportaFuncionariosParaList();</span>
+<span class="nc" id="L35">        tipoArquivo.exportaListEmArquivoExterno(lista,nomeArquivo);</span>
+<span class="nc" id="L36">    }</span>
+
+    private void imprimiNaTela(List&lt;String&gt; lista) {
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        for (int i = 0; i &lt; lista.size(); i = i+3) {</span>
+<span class="nc" id="L40">            String nome = lista.get(i);</span>
+<span class="nc" id="L41">            String CPF = lista.get(i+1);</span>
+<span class="nc" id="L42">            String cargo = lista.get(i+2);</span>
+<span class="nc" id="L43">            System.out.format(&quot;Nome: %s CPF: %s Posicao/Cargo: %s \n&quot;</span>
+                    ,nome,CPF,cargo);
+        }
+<span class="nc" id="L46">    }</span>
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

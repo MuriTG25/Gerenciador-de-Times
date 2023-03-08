@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JogadoresListaMetodos.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.aplicacao.lista_de_funcionarios.implementacoes</a> &gt; <span class="el_source">JogadoresListaMetodos.java</span></div><h1>JogadoresListaMetodos.java</h1><pre class="source lang-java linenums">package br.com.systemfut.aplicacao.lista_de_funcionarios.implementacoes;
+
+import br.com.systemfut.aplicacao.lista_de_funcionarios.ListaDeFuncionarios;
+import br.com.systemfut.dominio.funcionarios.Funcionarios;
+import br.com.systemfut.dominio.funcionarios.atletas_e_comissao.Jogadores;
+
+import java.util.Comparator;
+import java.util.List;
+
+public class JogadoresListaMetodos implements MetodosDaLista{
+    ListaDeFuncionarios funcionarios;
+
+<span class="nc" id="L13">    public JogadoresListaMetodos(ListaDeFuncionarios lista) {</span>
+<span class="nc" id="L14">        this.funcionarios = lista;</span>
+<span class="nc" id="L15">    }</span>
+    @Override
+    public void ordenaPorNome() {
+<span class="nc" id="L18">        this.funcionarios.getListaDeJogadores().sort(Comparator.comparing</span>
+<span class="nc" id="L19">                (Jogadores::getNomeCompleto));</span>
+<span class="nc" id="L20">    }</span>
+
+    @Override
+    public void ordenaPorCargo() {
+<span class="nc" id="L24">        this.funcionarios.getListaDeJogadores().sort(Comparator.comparing</span>
+<span class="nc" id="L25">                (Jogadores::getPosicao));</span>
+<span class="nc" id="L26">    }</span>
+
+    @Override
+    public String buscapeloCargo(String cargo) {
+<span class="nc" id="L30">        return this.funcionarios.getMapsDeJogador().get(cargo);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

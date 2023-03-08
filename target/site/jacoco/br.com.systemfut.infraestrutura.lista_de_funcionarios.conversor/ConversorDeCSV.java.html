@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConversorDeCSV.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.infraestrutura.lista_de_funcionarios.conversor</a> &gt; <span class="el_source">ConversorDeCSV.java</span></div><h1>ConversorDeCSV.java</h1><pre class="source lang-java linenums">package br.com.systemfut.infraestrutura.lista_de_funcionarios.conversor;
+
+import com.opencsv.CSVWriter;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+/**
+ * Interface que faz a importacao e exportacao de arquivos csv para uma lista de strings
+ * @author Murilo Bioni Caruso
+ * @version 1.1
+ * @since 2023
+ */
+
+<span class="nc" id="L21">public class ConversorDeCSV implements ConversorDeArquivo{</span>
+    @Override
+    public List&lt;String&gt; ImportadorDeArquivoEmList(String nomeArquivo) throws FileNotFoundException {
+<span class="nc" id="L24">        Scanner scanner = new Scanner(new File(nomeArquivo +&quot;.csv&quot;),&quot;UTF-8&quot;);</span>
+<span class="nc" id="L25">        List&lt;String&gt; lista = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        while(scanner.hasNext()){</span>
+<span class="nc" id="L27">            String linha = scanner.nextLine();</span>
+<span class="nc" id="L28">            Scanner scn = new Scanner(linha);</span>
+<span class="nc" id="L29">            scn.useDelimiter(&quot;,&quot;);</span>
+<span class="nc" id="L30">            String nome1 = scn.next();</span>
+<span class="nc" id="L31">            String CPF1 = scn.next();</span>
+<span class="nc" id="L32">            String cargo1 = scn.next();</span>
+<span class="nc" id="L33">            String nome = nome1.replace(&quot;\&quot;&quot;, &quot;&quot;);</span>
+<span class="nc" id="L34">            String CPF = CPF1.replace(&quot;\&quot;&quot;, &quot;&quot;);</span>
+<span class="nc" id="L35">            String cargo = cargo1.replace(&quot;\&quot;&quot;, &quot;&quot;);</span>
+<span class="nc" id="L36">            lista.add(nome);</span>
+<span class="nc" id="L37">            lista.add(CPF);</span>
+<span class="nc" id="L38">            lista.add(cargo);</span>
+<span class="nc" id="L39">            scn.close();</span>
+<span class="nc" id="L40">        }</span>
+<span class="nc" id="L41">        scanner.close();</span>
+<span class="nc" id="L42">        return lista;</span>
+    }
+
+    @Override
+    public void exportaListEmArquivoExterno(List&lt;String[]&gt; lista, String nomeArquivo) throws IOException {
+<span class="nc" id="L47">        Writer writer = Files.newBufferedWriter(Paths.get(nomeArquivo+&quot;.csv&quot;));</span>
+<span class="nc" id="L48">        CSVWriter csvWriter = new CSVWriter(writer);</span>
+<span class="nc" id="L49">        csvWriter.writeAll(lista);</span>
+<span class="nc" id="L50">        csvWriter.flush();</span>
+<span class="nc" id="L51">        writer.close();</span>
+<span class="nc" id="L52">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

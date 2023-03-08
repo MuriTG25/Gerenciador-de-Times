@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CPF.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.dominio.funcionarios.atributos_Funcionarios</a> &gt; <span class="el_source">CPF.java</span></div><h1>CPF.java</h1><pre class="source lang-java linenums">package br.com.systemfut.dominio.funcionarios.atributos_Funcionarios;
+
+import br.com.systemfut.aplicacao.exception.ValorInvalidoException;
+
+import java.util.InputMismatchException;
+
+public class CPF {
+    private String CPF;
+    //link do código utilizado: https://www.4devs.com.br/gerador_de_cpf
+<span class="nc" id="L10">    public CPF(String CPF) {</span>
+<span class="nc bnc" id="L11" title="All 2 branches missed.">        if (CPF.equals(&quot;00000000000&quot;) ||</span>
+<span class="nc bnc" id="L12" title="All 2 branches missed.">                CPF.equals(&quot;11111111111&quot;) ||</span>
+<span class="nc bnc" id="L13" title="All 4 branches missed.">                CPF.equals(&quot;22222222222&quot;) || CPF.equals(&quot;33333333333&quot;) ||</span>
+<span class="nc bnc" id="L14" title="All 4 branches missed.">                CPF.equals(&quot;44444444444&quot;) || CPF.equals(&quot;55555555555&quot;) ||</span>
+<span class="nc bnc" id="L15" title="All 4 branches missed.">                CPF.equals(&quot;66666666666&quot;) || CPF.equals(&quot;77777777777&quot;) ||</span>
+<span class="nc bnc" id="L16" title="All 4 branches missed.">                CPF.equals(&quot;88888888888&quot;) || CPF.equals(&quot;99999999999&quot;) ||</span>
+<span class="nc bnc" id="L17" title="All 2 branches missed.">                (CPF.length() != 11)){</span>
+<span class="nc" id="L18">            throw new ValorInvalidoException(&quot;CPF invalido&quot;);</span>
+        }
+        char dig10, dig11;
+        int sm, i, r, num, peso;
+        try {
+<span class="nc" id="L23">            sm = 0;</span>
+<span class="nc" id="L24">            peso = 10;</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">            for (i=0; i&lt;9; i++) {</span>
+<span class="nc" id="L26">                num = (int)(CPF.charAt(i) - 48);</span>
+<span class="nc" id="L27">                sm = sm + (num * peso);</span>
+<span class="nc" id="L28">                peso = peso - 1;</span>
+            }
+
+<span class="nc" id="L31">            r = 11 - (sm % 11);</span>
+<span class="nc bnc" id="L32" title="All 4 branches missed.">            if ((r == 10) || (r == 11))</span>
+<span class="nc" id="L33">                dig10 = '0';</span>
+<span class="nc" id="L34">            else dig10 = (char)(r + 48);</span>
+
+<span class="nc" id="L36">            sm = 0;</span>
+<span class="nc" id="L37">            peso = 11;</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">            for(i=0; i&lt;10; i++) {</span>
+<span class="nc" id="L39">                num = (int)(CPF.charAt(i) - 48);</span>
+<span class="nc" id="L40">                sm = sm + (num * peso);</span>
+<span class="nc" id="L41">                peso = peso - 1;</span>
+            }
+
+<span class="nc" id="L44">            r = 11 - (sm % 11);</span>
+<span class="nc bnc" id="L45" title="All 4 branches missed.">            if ((r == 10) || (r == 11))</span>
+<span class="nc" id="L46">                dig11 = '0';</span>
+<span class="nc" id="L47">            else dig11 = (char)(r + 48);</span>
+<span class="nc bnc" id="L48" title="All 4 branches missed.">            if ((dig10 == CPF.charAt(9)) &amp;&amp; (dig11 == CPF.charAt(10))){</span>
+<span class="nc" id="L49">                this.CPF = CPF;</span>
+            }
+<span class="nc" id="L51">            else throw new ValorInvalidoException(&quot;CPF invalido&quot;);</span>
+<span class="nc" id="L52">        } catch (InputMismatchException erro) {</span>
+<span class="nc" id="L53">            throw new ValorInvalidoException(&quot;CPF invalido&quot;);</span>
+<span class="nc" id="L54">        }</span>
+<span class="nc" id="L55">    }</span>
+    public String imprimeCPF() {
+<span class="nc" id="L57">        return CPF;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L62">        return (CPF.substring(0, 3) + &quot;.&quot; + CPF.substring(3, 6) + &quot;.&quot; +</span>
+<span class="nc" id="L63">                CPF.substring(6, 9) + &quot;-&quot; + CPF.substring(9, 11));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

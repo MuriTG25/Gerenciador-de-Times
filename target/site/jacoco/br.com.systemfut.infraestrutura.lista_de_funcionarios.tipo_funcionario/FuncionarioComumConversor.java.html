@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FuncionarioComumConversor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.infraestrutura.lista_de_funcionarios.tipo_funcionario</a> &gt; <span class="el_source">FuncionarioComumConversor.java</span></div><h1>FuncionarioComumConversor.java</h1><pre class="source lang-java linenums">package br.com.systemfut.infraestrutura.lista_de_funcionarios.tipo_funcionario;
+
+import br.com.systemfut.aplicacao.lista_de_funcionarios.ListaDeFuncionarios;
+import br.com.systemfut.aplicacao.lista_de_funcionarios.implementacoes.FuncionariosComumListaMetodos;
+import br.com.systemfut.aplicacao.lista_de_funcionarios.fabrica_de_lista.FabricaDeLista;
+import br.com.systemfut.dominio.funcionarios.atributos_Funcionarios.CPF;
+import br.com.systemfut.dominio.funcionarios.funcionarios_gerais.FuncionariosComum;
+
+import java.util.ArrayList;
+import java.util.List;
+/**
+ * Classe que faz a importacao e exportacao de lista de strings vinda
+ * de um arquivo externo para uma lista de Funcionarios Comum
+ * @author Murilo Bioni Caruso
+ * @version 1.1
+ * @since 2023
+ */
+public class FuncionarioComumConversor implements ConversorDeFuncionario{
+    ListaDeFuncionarios funcionarios;
+    FuncionariosComumListaMetodos comumListaMetodos;
+    FabricaDeLista fabrica;
+
+<span class="nc" id="L23">    public FuncionarioComumConversor(ListaDeFuncionarios funcionarios) {</span>
+<span class="nc" id="L24">        this.funcionarios = funcionarios;</span>
+<span class="nc" id="L25">        comumListaMetodos = new FuncionariosComumListaMetodos(this.funcionarios);</span>
+<span class="nc" id="L26">        fabrica = new FabricaDeLista(funcionarios);</span>
+<span class="nc" id="L27">    }</span>
+
+    @Override
+    public void criaFuncionarioPeloImporte(List&lt;String&gt; listaDeStrings) {
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        for (int i = 0; i &lt; listaDeStrings.size(); i = i+3) {</span>
+<span class="nc" id="L32">            String nome = listaDeStrings.get(i);</span>
+<span class="nc" id="L33">            String CPF = listaDeStrings.get(i + 1);</span>
+<span class="nc" id="L34">            String cargo = listaDeStrings.get(i + 2);</span>
+<span class="nc" id="L35">            this.fabrica.adicionarFuncionarioNovo(new FuncionariosComum(nome,new CPF(CPF),cargo));</span>
+        }
+<span class="nc" id="L37">    }</span>
+
+    @Override
+    public List&lt;String[]&gt; exportaFuncionariosParaList() {
+<span class="nc" id="L41">        List&lt;FuncionariosComum&gt; listaDeFuncionarios = this.funcionarios.getListaDeFuncionariosComum();</span>
+<span class="nc" id="L42">        List&lt;String[]&gt; linhas = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        for (int i = 0; i &lt; listaDeFuncionarios.size(); i++) {</span>
+<span class="nc" id="L44">            String nome = listaDeFuncionarios.get(i).getNomeCompleto();</span>
+<span class="nc" id="L45">            String cpf = listaDeFuncionarios.get(i).getCPF();</span>
+<span class="nc" id="L46">            String posicao = listaDeFuncionarios.get(i).getCargo();</span>
+<span class="nc" id="L47">            linhas.add(new String[]{nome,cpf,posicao});</span>
+        }
+<span class="nc" id="L49">        return linhas;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

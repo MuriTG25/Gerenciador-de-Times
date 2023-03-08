@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ComissaoTecnica.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.dominio.funcionarios.atletas_e_comissao</a> &gt; <span class="el_source">ComissaoTecnica.java</span></div><h1>ComissaoTecnica.java</h1><pre class="source lang-java linenums">package br.com.systemfut.dominio.funcionarios.atletas_e_comissao;
+
+import br.com.systemfut.aplicacao.reajuste.ReajusteService;
+import br.com.systemfut.dominio.funcionarios.atributos_Funcionarios.CPF;
+import br.com.systemfut.dominio.funcionarios.InterfaceSalario;
+import br.com.systemfut.aplicacao.exception.ValorInvalidoException;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+/**
+ * Classe para organizar a Comissão Tecnica
+ * @author Murilo Bioni Caruso
+ * @version 1.1
+ * @since 2023
+ */
+public final class ComissaoTecnica extends AtletasEComissao implements InterfaceSalario {
+    public ComissaoTecnica(String nomeCompleto, CPF CPF, String cargo) {
+<span class="nc" id="L19">        super(nomeCompleto, CPF);</span>
+<span class="nc" id="L20">        this.cargo = cargo;</span>
+<span class="nc" id="L21">    }</span>
+    private String cargo;
+
+    public String getCargo() {
+<span class="nc" id="L25">        return cargo;</span>
+    }
+    public void setCargo(String cargo) {
+<span class="nc" id="L28">        this.cargo = cargo;</span>
+<span class="nc" id="L29">    }</span>
+    @Override
+    public void setSalario(BigDecimal salario) {
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        if (salario.compareTo(new BigDecimal(&quot;2000.0&quot;))&lt;0</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        || salario.compareTo(new BigDecimal(&quot;20000.0&quot;))&gt;0){</span>
+<span class="nc" id="L34">            throw new ValorInvalidoException(</span>
+                    &quot;O salário não deve ser menor que 2000 e nem maior que 20000&quot;);
+        }
+<span class="nc" id="L37">        this.salario = salario.setScale(2);</span>
+<span class="nc" id="L38">    }</span>
+    @Override
+    public String toString() {
+<span class="nc" id="L41">        return &quot;[Nome: &quot;+this.getNomeCompleto()+&quot; / CPF: &quot;+</span>
+<span class="nc" id="L42">                this.getCPF()+&quot; / Cargo: &quot;+this.getCargo()+&quot;]&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,7 +1,19 @@
-D:\Dropbox\Alura\Java-Extra\3_projeto_rh_clube\gerenciadordetimes\src\test\java\br\com\systemfut\funcionarios_gerais\FuncionariosComumTest.java
-D:\Dropbox\Alura\Java-Extra\3_projeto_rh_clube\gerenciadordetimes\src\test\java\br\com\systemfut\atletas_e_comissao\JogadoresTest.java
-D:\Dropbox\Alura\Java-Extra\3_projeto_rh_clube\gerenciadordetimes\src\test\java\br\com\systemfut\atletas_e_comissao\ComissaoTecnicaTest.java
-D:\Dropbox\Alura\Java-Extra\3_projeto_rh_clube\gerenciadordetimes\src\test\java\br\com\systemfut\Clube\ClubeTest.java
-D:\Dropbox\Alura\Java-Extra\3_projeto_rh_clube\gerenciadordetimes\src\test\java\br\com\systemfut\dados_extras\DadosPessoaisTest.java
-D:\Dropbox\Alura\Java-Extra\3_projeto_rh_clube\gerenciadordetimes\src\test\java\br\com\systemfut\bonificacao\BonificacaoTestTest.java
-D:\Dropbox\Alura\Java-Extra\3_projeto_rh_clube\gerenciadordetimes\src\test\java\br\com\systemfut\funcionarios_gerais\FuncionariosADMTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\atletas_e_comissao\ComissaoTecnicaTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\funcionarios\atributos_Funcionarios\CPFTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\funcionarios\dados_extras\DadosBancariosTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\aplicacao\bonificacao\BonificacaoTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\funcionarios\dados_extras\atribitos_dados_pessoais\EmailTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\aplicacao\reajuste\ReajusteServiceTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\Clube\valores\CNPJTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\atletas_e_comissao\JogadoresTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\funcionarios_gerais\FuncionariosComumTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\funcionarios\dados_extras\DadosPessoaisTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\funcionarios_gerais\FuncionariosADMTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\infraestrutura\lista_de_funcionarios\ConversorDeArquivoEmFuncionarioTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\infraestrutura\senha\CriadorEAcessadorDeSenhasArquivoPropertiesTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\funcionarios\dados_extras\atribitos_dados_pessoais\TelefoneTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\funcionarios\dados_extras\atributos_dados_bancarios\ConsultaDeBancosTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\funcionarios\FuncionariosTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\aplicacao\lista_de_funcionarios\implementacoes\fabrica_de_lista\FabricaDeListaTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\Clube\ClubeTest.java
+D:\Dropbox\Alura\04-Java-Extra\3-projeto-rh-clube\gerenciadordetimes 1.1\src\test\java\br\com\systemfut\dominio\funcionarios\dados_extras\EnderecoTest.java

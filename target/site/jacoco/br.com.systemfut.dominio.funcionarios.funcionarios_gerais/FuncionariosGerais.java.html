@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FuncionariosGerais.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.dominio.funcionarios.funcionarios_gerais</a> &gt; <span class="el_source">FuncionariosGerais.java</span></div><h1>FuncionariosGerais.java</h1><pre class="source lang-java linenums">package br.com.systemfut.dominio.funcionarios.funcionarios_gerais;
+
+import br.com.systemfut.aplicacao.reajuste.ReajusteService;
+import br.com.systemfut.dominio.funcionarios.Funcionarios;
+import br.com.systemfut.dominio.funcionarios.atributos_Funcionarios.CPF;
+import br.com.systemfut.dominio.funcionarios.funcionarios_gerais.valores.FuncionariosSalarios;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+public abstract sealed class FuncionariosGerais extends Funcionarios permits FuncionariosComum, FuncionariosADM {
+
+    protected BigDecimal salario;
+    private LocalDate dataDoUltimoReajusteSalarial;
+
+    public FuncionariosGerais(String nomeCompleto, CPF CPF) {
+<span class="nc" id="L17">        super(nomeCompleto, CPF);</span>
+<span class="nc" id="L18">    }</span>
+
+    public BigDecimal getSalario() {
+<span class="nc" id="L21">        return salario.setScale(2);</span>
+    }
+    public void setSalario(FuncionariosSalarios c) {
+<span class="nc" id="L24">        this.salario = c.pagamento();</span>
+<span class="nc" id="L25">        this.dataDoUltimoReajusteSalarial = LocalDate.now();</span>
+<span class="nc" id="L26">    }</span>
+    public LocalDate getDataDoUltimoReajuste() {
+<span class="nc" id="L28">        return dataDoUltimoReajusteSalarial;</span>
+    }
+    public void setDataDeReajusteSalarial(int dia, int mes, int ano) {
+<span class="nc" id="L31">        this.dataDoUltimoReajusteSalarial = LocalDate.of(ano, mes, dia);</span>
+<span class="nc" id="L32">    }</span>
+    public void reajustaSalario(BigDecimal porcentagemAumento) {
+<span class="nc" id="L34">        BigDecimal validacao = new ReajusteService().getNovoSalarioDoFuncionario(porcentagemAumento, this);</span>
+<span class="nc" id="L35">        BigDecimal novoValor = validacao.multiply(this.salario).add(this.salario);</span>
+<span class="nc" id="L36">        this.salario = novoValor;</span>
+<span class="nc" id="L37">        this.dataDoUltimoReajusteSalarial = LocalDate.now();</span>
+<span class="nc" id="L38">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

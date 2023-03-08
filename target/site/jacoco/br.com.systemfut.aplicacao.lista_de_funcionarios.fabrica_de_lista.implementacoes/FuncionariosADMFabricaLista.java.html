@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FuncionariosADMFabricaLista.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.aplicacao.lista_de_funcionarios.fabrica_de_lista.implementacoes</a> &gt; <span class="el_source">FuncionariosADMFabricaLista.java</span></div><h1>FuncionariosADMFabricaLista.java</h1><pre class="source lang-java linenums">package br.com.systemfut.aplicacao.lista_de_funcionarios.fabrica_de_lista.implementacoes;
+
+import br.com.systemfut.aplicacao.lista_de_funcionarios.ListaDeFuncionarios;
+import br.com.systemfut.dominio.funcionarios.Funcionarios;
+import br.com.systemfut.dominio.funcionarios.funcionarios_gerais.FuncionariosADM;
+
+public class FuncionariosADMFabricaLista extends FabricaDeListaMetodos {
+    ListaDeFuncionarios funcionarios;
+
+    public FuncionariosADMFabricaLista(FabricaDeListaMetodos proximo, ListaDeFuncionarios funcionarios) {
+<span class="nc" id="L11">        super(proximo);</span>
+<span class="nc" id="L12">        this.funcionarios = funcionarios;</span>
+<span class="nc" id="L13">    }</span>
+
+    @Override
+    protected void adicionaFuncionario(Funcionarios funcionario) {
+<span class="nc" id="L17">        FuncionariosADM adm = (FuncionariosADM) funcionario;</span>
+<span class="nc" id="L18">        this.funcionarios.getListaDeFuncionariosADM().add(adm);</span>
+<span class="nc" id="L19">        this.funcionarios.getMapsDeFuncionariosADM().put(adm.getCargo(),adm.getNomeCompleto());</span>
+<span class="nc" id="L20">    }</span>
+    @Override
+    protected void removeFuncionario(Funcionarios funcionario) {
+<span class="nc" id="L23">        FuncionariosADM adm = (FuncionariosADM) funcionario;</span>
+<span class="nc" id="L24">        this.funcionarios.getListaDeFuncionariosADM().remove(adm);</span>
+<span class="nc" id="L25">        this.funcionarios.getMapsDeFuncionariosADM().remove(adm.getCargo(),adm.getNomeCompleto());</span>
+<span class="nc" id="L26">    }</span>
+
+    @Override
+    protected boolean verificaClasse(Funcionarios funcionario) {
+<span class="nc" id="L30">        return funcionario instanceof FuncionariosADM;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExtraiDadosDeBancosEmJson.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gerenciadordetimes</a> &gt; <a href="index.source.html" class="el_package">br.com.systemfut.infraestrutura.funcionarios.dados_extras.atributos_dados_bancarios</a> &gt; <span class="el_source">ExtraiDadosDeBancosEmJson.java</span></div><h1>ExtraiDadosDeBancosEmJson.java</h1><pre class="source lang-java linenums">package br.com.systemfut.infraestrutura.funcionarios.dados_extras.atributos_dados_bancarios;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.*;
+import java.util.stream.Collectors;
+
+<span class="nc" id="L12">public class ExtraiDadosDeBancosEmJson implements ExtraiDadosDeBancoNaNet{</span>
+    public String getSite(){
+<span class="nc" id="L14">        return &quot;https://gist.githubusercontent.com/antoniopresto/d73888dab087ae35a7cf41a61d8a3cbc/&quot; +</span>
+                &quot;raw/43c94b305367afa82734f6fb4480f55e77e08a6e/banco_codigo.json&quot;;
+    }
+    @Override
+    public String pegaSiteEmString(){
+        try {
+<span class="nc" id="L20">            HttpClient client = HttpClient.newHttpClient();</span>
+<span class="nc" id="L21">            HttpRequest request = HttpRequest.newBuilder().uri</span>
+<span class="nc" id="L22">                    (new URI(this.getSite())).GET().build();</span>
+<span class="nc" id="L23">            HttpResponse&lt;String&gt; response = client.send(request,</span>
+<span class="nc" id="L24">                    HttpResponse.BodyHandlers.ofString());</span>
+<span class="nc" id="L25">            return response.body();</span>
+<span class="nc" id="L26">        } catch (URISyntaxException | IOException | InterruptedException e) {</span>
+<span class="nc" id="L27">            throw new RuntimeException(e);</span>
+        }
+    }
+    @Override
+    public Map&lt;String,Integer&gt; transformaStringEmList(String json){
+<span class="nc" id="L32">        String[] split = json.split(&quot;,&quot;);</span>
+<span class="nc" id="L33">        List&lt;String&gt; listaRawAgencia = Arrays.stream(split).filter(</span>
+<span class="nc" id="L34">                c -&gt; c.contains(&quot;value&quot;)).collect(Collectors.toList());</span>
+<span class="nc" id="L35">        List&lt;String&gt; listaRawNomeBanco = Arrays.stream(split).filter(</span>
+<span class="nc" id="L36">                c -&gt; c.contains(&quot;label&quot;)).collect(Collectors.toList());</span>
+<span class="nc" id="L37">        ArrayList&lt;Integer&gt; ListaLimpaAgencia = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L38">        ArrayList&lt;String&gt; ListaLimpaNomeBanco = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        for (String agencia : listaRawAgencia) {</span>
+<span class="nc" id="L40">            String replace = agencia.replaceAll(&quot;\&quot;&quot;, &quot;&quot;).replaceAll(&quot;\\{&quot;, &quot;&quot;).</span>
+<span class="nc" id="L41">                    replaceAll(&quot;}&quot;, &quot;&quot;).replaceAll(&quot;\\[&quot;,&quot;&quot;).</span>
+<span class="nc" id="L42">                    replaceAll(&quot;]&quot;,&quot;&quot;);</span>
+<span class="nc" id="L43">            String agenciaCortada = replace.substring(15);</span>
+<span class="nc" id="L44">            int numero = Integer.parseInt(agenciaCortada);</span>
+<span class="nc" id="L45">            ListaLimpaAgencia.add(numero);</span>
+<span class="nc" id="L46">        }</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        for (String nome: listaRawNomeBanco) {</span>
+<span class="nc" id="L48">            String replace = nome.replaceAll(&quot;\&quot;&quot;, &quot;&quot;).replaceAll(&quot;\\{&quot;, &quot;&quot;).</span>
+<span class="nc" id="L49">                    replaceAll(&quot;}&quot;, &quot;&quot;).replaceAll(&quot;\\[&quot;,&quot;&quot;).</span>
+<span class="nc" id="L50">                    replaceAll(&quot;]&quot;,&quot;&quot;);</span>
+<span class="nc" id="L51">            String nomeCortado = replace.substring(12);</span>
+<span class="nc" id="L52">            ListaLimpaNomeBanco.add(nomeCortado);</span>
+<span class="nc" id="L53">        }</span>
+
+<span class="nc" id="L55">        Map&lt;String,Integer&gt; bancos = new LinkedHashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        for (int i = 0; i &lt; ListaLimpaAgencia.size(); i++) {</span>
+<span class="nc" id="L57">            bancos.put(ListaLimpaNomeBanco.get(i),ListaLimpaAgencia.get(i));</span>
+        }
+<span class="nc" id="L59">        return bancos;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
