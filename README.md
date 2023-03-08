@@ -1,6 +1,8 @@
 # Gerenciador-de-Times
-Meu primeiro projeto em Java. Esse projeto consiste em um banco de dados de um RH de um time de Futebol, onde controlamos os dados dos Jogadores, Comissao Técnica e Funcionários.<br />
-Dentro desses dados, organizamos os dados pessoas, como Nome, RG, CPF, dados bancários e etc. E organizamos os funcionários em 4 categorias que armazenados em lista: Funcionários Comum, Funcionarios Administrativos, Jogadores e Comissão Técnica.
+Meu primeiro projeto em Java, e também o primeiro um pouco mais robustos. Ele consiste em um banco de dados de um RH de um time de Futebol, no qual gerenciamos dados de Jogadores, Comissao Técnica e Funcionários.<br />
+Serve para armazenar dados referentes aos funcionários, como dados pessoais, endereço, salario, dados bancários, e verificação de validação alguns deles.<br />
+Podemos gerenciar coisas relacionadas ao mesmo, como bonificação, reajuste salarial, listas dos mesmos, exportação e importação de lista.<br />
+Esse projeto ainda é bem simples, ainda não possui uma interface, mas no 2º semestre de 2023 deve se transformar em um aplicativo Android.<br />
 
 # Versão 1.0
 
