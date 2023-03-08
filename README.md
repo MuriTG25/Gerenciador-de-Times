@@ -16,10 +16,6 @@ Leitura e escrita de arquivos com métodos do Java.io como:
 - Criação de arquivos properties para armazenamento de dados de Login.<br />
 - Leitura de arquivo .csv e converter o mesmo para criação de Jogadores, Funcionários e Comissão Técnica e ao mesmo tempo adicioná-los em List e Maps de forma automática.
 
-Esse projeto é apenas um esboço, ainda preciso melhorar muita coisa nesse arquivo, como uma criação de interface (que possívelmente no futuro irá se transformar em um aplicativo Android).<br />
-Além disso, eu quero melhorar meu código em vários pontos. Um deles é o fato que eu tenho 4 Lists e 4 Maps para armazenar dados de Jogadores, Comissão técnica, Funcionários Comum e Funcionarios Administrativos.<br />
-Como eu decidi fazer uma unmodifiableList e unmodifiableMaps, eu acabei sendo obrigado a ter 4 códigos identicos para cada categoria de funcionário, o que dificulta a manuntenção do mesmo, por isso no futuro eu quero ter um jeito de proteger meu código, sem ter o mesmo quadruplicado.
-
 Esse projeto foi feito no Java 17, usando o IntelliJ, sendo um projeto maven.<br />
 Plugin utilizados:<br />
 - Maven Compiler Plugin <br />
@@ -31,6 +27,7 @@ Plugin utilizados:<br />
 Esse projeto tem como motivo principal mostrar o que eu aprendi no curso de "Aprofunde em Java com arquitetura e padrões de projeto" e outros cursos Java.<br />
 Nesse projeto eu coloco em prática algumas coisas que eu aprendi no curso, como os principios de Clean Architecture,Design Patterns e SOLID, protocolo HTTP Request, e etc..<br />
 Refatorei muito meu código, usando esses principios, para facilitar a manuntenção e leitura do mesmo, com um código mais desacoplado<br />
+Como por exemplo minha classe de lista de funcionários estava uma bagunça, e se utlizando desses princípios, separei o mesmo em muitos arquivos e deixei a leitura e manuntenção muito mellhor<br />
 Criei uma classe Funcionarios para poder linkar todos as classes, Jogadores, Comissão técnica, Funcionários Comum e Funcionarios Administrativos e ter que repetir menos códigos que estavam duplicados em AtletasEComissao e FuncionariosGerais<br />
 Uso maior de Interfaces, para o código ser mais dependente do mesmo e não de classes<br />
 Separei os arquivos em 4 grupos: 
