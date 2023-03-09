@@ -29,7 +29,7 @@ Outras melhorias:
 - Refatoracão em Bonificação
 - Automatização de todos os testes em Junit, até aqueles que retornam uma resposta de um texto console ou criação de arquivo
 
-Esse projeto foi feito no Java 17, usando o IntelliJ, sendo um projeto maven.<br />
+Esse projeto foi feito no Java 17, usando a IDE IntelliJ, sendo um projeto maven.<br />
 Plugin utilizados:<br />
 - Maven Compiler Plugin
 - Jacoco 
