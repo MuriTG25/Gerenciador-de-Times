@@ -4,13 +4,9 @@ import br.com.systemfut.infraestrutura.funcionarios.dados_extras.atributos_dados
 import br.com.systemfut.infraestrutura.funcionarios.dados_extras.atributos_dados_bancarios.ExtraiDadosDeBancosEmJson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.boot.test.system.CapturedOutput;
-import org.springframework.boot.test.system.OutputCaptureExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ExtendWith(OutputCaptureExtension.class)
 class ConsultaDeBancosTest {
     ConsultaDeBancos consulta;
     ExtraiDadosDeBancosEmJson json;
@@ -20,8 +16,7 @@ class ConsultaDeBancosTest {
         consulta = new ConsultaDeBancos(this.json);
     }
     @Test
-    public void confereSeABuscaFoiBemSucedida(CapturedOutput output) {
-        System.out.println(consulta.consultaMapsDeBanco());
+    public void confereSeABuscaFoiBemSucedida() {
         assertEquals("""
                 {Banco do Brasil S.A.
                   =1, Banco da Amazônia S.A.
@@ -205,7 +200,7 @@ class ConsultaDeBancosTest {
                   =755, Banco Cooperativo do Brasil S/A - Bancoob
                   =756, Banco Keb Hana do Brasil S. A.
                  \s
-                =757}""", output.getOut().trim());
+                =757}""", consulta.consultaMapsDeBanco().toString());
 
     }
 }
